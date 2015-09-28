@@ -1,0 +1,12 @@
+<resources>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="EMC_blue">#2c95dd</color>
+    <color name="btn_green">#51E075</color>
+    <color name="grey">#C3C3C3</color>
+    <color name="ing_background">#FF6A06</color>
+    <color name="ing_button">#FB7B0E</color>
+    <color name="black">#000</color>
+
+</resources>

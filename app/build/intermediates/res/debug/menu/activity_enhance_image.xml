@@ -1,0 +1,54 @@
+<!-- 
+* EMC Confidential
+* Copyright © 2013 EMC Corporation.  All rights reserved.
+ -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <group android:id="@+id/ABMainGroup">
+		<item
+			android:id="@+id/ABQuadCrop"
+			android:orderInCategory="105"
+			android:title="@string/Menu_QuadCrop" />
+		<item
+	        android:id="@+id/ABBlackWhite"
+	        android:orderInCategory="102"
+	        android:title="@string/Menu_BlackWhite" />       
+	    <item 
+	        android:id="@+id/ABAutoCrop" 
+	        android:orderInCategory="103" 
+	        android:title="@string/Menu_AutoCrop" />            
+	    <item 
+	        android:id="@+id/ABCrop" 
+	        android:orderInCategory="105" 
+	        android:title="@string/Menu_Crop" />
+	    <item 
+	        android:id="@+id/ABDeskew" 
+	        android:orderInCategory="106" 
+	        android:title="@string/Menu_Deskew" />            
+	    <item
+	        android:id="@+id/ABGray"
+	        android:orderInCategory="107"
+	        android:title="@string/Menu_Gray" />    
+	    <item
+	        android:id="@+id/ABResize"
+	        android:orderInCategory="108"
+	        android:title="@string/Menu_Resize" />
+	    <item
+	        android:id="@+id/ABRotate180"
+	        android:orderInCategory="109"
+	        android:title="@string/Menu_Rotate180" />
+	    <item
+	        android:id="@+id/ABRotateLeft"
+	        android:orderInCategory="110"
+	        android:title="@string/Menu_RotateLeft" />
+	    <item
+	        android:id="@+id/ABRotateRight"
+	        android:orderInCategory="111"
+	        android:title="@string/Menu_RotateRight" />
+	    <item
+	        android:id="@+id/ABInfo"
+	        android:orderInCategory="112"
+	        android:title="@string/Menu_GetInfo" >
+	    </item>
+    </group>
+</menu>
+<!-- From: file:/Users/guinnj/Syncplicity/ING%20RBI%20Mobile%20Capture/Mobile%20App/Source/v002/ING_RBI_POC/EMCMobileBankingxCP/app/src/main/res/menu/activity_enhance_image.xml -->

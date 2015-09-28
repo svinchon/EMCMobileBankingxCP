@@ -1,0 +1,89 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="ing.rbi.poc.country_list">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:text="Country"
+                android:textColor="@color/ing_background"
+                android:textSize="20sp"
+                android:gravity="center_horizontal"
+                android:id="@+id/lbl_Country"
+                />
+
+            <Spinner
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/country_spinner"
+                android:layout_gravity="left|top"
+                android:entries="@array/country_array"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20sp"
+                android:layout_alignParentTop="true"
+                android:layout_alignLeft="@+id/doctype_spinner"
+                android:layout_alignStart="@+id/doctype_spinner" />
+
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:text="Document Type"
+                android:textColor="@color/ing_background"
+                android:textSize="20sp"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/country_spinner"
+                android:id="@+id/lbl_DocType"
+                />
+
+            <Spinner
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/doctype_spinner"
+                android:layout_gravity="left|top"
+                android:entries="@array/doctype_array"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20sp"
+                android:layout_alignTop="@+id/lbl_DocType"
+                android:layout_alignLeft="@+id/fragment_clist_dynamic_layout_level1"
+                android:layout_alignStart="@+id/fragment_clist_dynamic_layout_level1"
+                />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/fragment_clist_dynamic_layout_level1"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@+id/doctype_spinner">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/fragment_clist_dynamic_layout_level2"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@+id/fragment_clist_dynamic_layout_level1"
+                >
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</FrameLayout>
+<!-- From: file:/Users/guinnj/Syncplicity/ING%20RBI%20Mobile%20Capture/Mobile%20App/Source/v002/ING_RBI_POC/EMCMobileBankingxCP/app/src/main/res/layout/fragment_country_list.xml -->

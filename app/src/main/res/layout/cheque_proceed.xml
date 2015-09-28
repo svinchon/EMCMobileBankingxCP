@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:text="Proceed"
+android:id="@+id/add_cheque_proceed"
+android:textSize="20sp"
+android:background="@color/ing_button"
+android:textColor="@color/white"
+android:layout_gravity="center_horizontal"
+android:layout_marginTop="50dp"
+android:gravity="center"
+app:foundryTypeface="Quicksand-Regular"
+/>

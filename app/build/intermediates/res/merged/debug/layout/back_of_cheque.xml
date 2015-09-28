@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/layout_back_cheque"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/label_back_cheque"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Attach another image"
+        android:textColor="@color/ing_background"
+        android:textSize="20sp"
+        android:paddingTop="10dp"
+        app:foundryTypeface="Quicksand-Regular"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/back_cheque_radio_group"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/back_cheque_radio_yes"
+            android:text="Yes"
+            app:foundryTypeface="Cantarell-Regular"
+            android:textSize="20sp"
+            />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/back_cheque_radio_no"
+            android:text="No"
+            app:foundryTypeface="Cantarell-Regular"
+            android:textSize="20sp"
+            />
+        </RadioGroup>
+
+    <include layout="@layout/add_proof_id"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:id="@+id/add_back_of_cheque_media_buttons"/>
+
+
+    <include layout="@layout/cheque_proceed"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
+        android:id="@+id/add_back_of_cheque_proceed"/>
+
+</LinearLayout><!-- From: file:/D:/xTools/AndroidStudio/Workspace/EMCMobileBankingxCP/app/src/main/res/layout/back_of_cheque.xml -->

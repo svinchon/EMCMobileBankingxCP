@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/guinnj/Syncplicity/ING%20RBI%20Mobile%20Capture/Mobile%20App/Source/v002/ING_RBI_POC/EMCMobileBankingxCP/app/src/main/res/values-v14/styles.xml -->
+    <eat-comment/>
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- API 14 theme customizations can go here. -->
+    </style>
+</resources>

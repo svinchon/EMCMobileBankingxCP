@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/action_settings"/>
+
+</menu>
+<!-- From: file:/Users/guinnj/Syncplicity/ING%20RBI%20Mobile%20Capture/Mobile%20App/Source/v002/ING_RBI_POC/EMCMobileBankingxCP/app/src/main/res/menu/cheque_results.xml -->

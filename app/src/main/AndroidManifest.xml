@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ing.rbi.poc"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="13"
+        android:targetSdkVersion="18" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.Camera.AutoFocus"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ing_sqaure"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".LoginScreen"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CreateBatch"
+            android:label="@string/title_activity_create_batch" >
+        </activity>
+        <activity
+            android:name=".AddCheque"
+            android:label="@string/title_activity_add_cheque" >
+        </activity>
+        <activity
+            android:name="emc.captiva.mobile.sdk.CameraActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".ImageInfoActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".EnhanceImageActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".EnhanceImageCropActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".AddBill"
+            android:label="@string/Add_Bill" >
+        </activity>
+        <activity
+            android:name=".ChequeResults"
+            android:label="@string/title_activity_cheque_results" >
+        </activity>
+        <activity
+            android:name=".BillResults"
+            android:label="@string/title_activity_bill_results" >
+        </activity>
+        <activity
+            android:name=".AddPID"
+            android:label="@string/title_activity_add_pid" >
+        </activity>
+        <activity
+            android:name=".PIDResults"
+            android:label="@string/title_activity_pidresults" >
+        </activity>
+        <activity
+            android:name=".AddBackOfCheque"
+            android:label="@string/title_activity_add_back_of_cheque" >
+        </activity>
+        <activity
+            android:name=".AddSecondCheque"
+            android:label="@string/title_activity_add_second_cheque" >
+        </activity>
+        <activity
+            android:name=".ViewDocuments"
+            android:label="@string/title_activity_view_documents" >
+        </activity>
+        <activity
+            android:name=".CreateBatchTabbed"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="emc.captiva.mobile.sdk.QuadrilateralCropActivity"
+            android:label="Quad Crop"
+            android:theme="@android:style/Theme.Holo" >
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+    </application>
+
+</manifest>

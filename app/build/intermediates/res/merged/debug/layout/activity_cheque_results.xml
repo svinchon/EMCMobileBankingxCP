@@ -1,0 +1,132 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".ChequeResults" >
+
+    <TextView
+        android:id="@+id/lbl_ChequeReference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cheque Reference"
+        android:textColor="@color/EMC_blue"
+      />
+
+    <EditText
+        android:id="@+id/txt_chequedate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date"
+        android:layout_below = "@+id/lbl_chequedate" />
+
+    <TextView
+        android:id="@+id/lbl_ChequeNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cheque Number"
+        android:textColor="@color/EMC_blue"
+        android:layout_below = "@+id/txt_chequedate" />
+
+    <EditText
+        android:id="@+id/txt_ChequeNumber"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lbl_BranchCode"
+        android:layout_below="@+id/lbl_ChequeNumber"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/lbl_BranchCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lbl_ChequeNumber"
+        android:layout_below="@+id/txt_ChequeNumber"
+        android:text="Branch Code"
+        android:textColor="@color/EMC_blue" />
+
+    <EditText
+        android:id="@+id/txt_BranchCode"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lbl_BranchCode"
+        android:layout_below="@+id/lbl_BranchCode"
+        android:ems="10"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btn_BillAccept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txt_ChequeAmount"
+        android:layout_below="@+id/txt_ChequeAmount"
+        android:background="@color/EMC_blue"
+        android:onClick="onAccept"
+        android:text="Accept"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/lbl_ChequeAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txt_ChequeAmount"
+        android:layout_below="@+id/txt_AccountNumber"
+        android:layout_marginTop="17dp"
+        android:text="Cheque Amount"
+        android:textColor="@color/EMC_blue" />
+
+    <EditText
+        android:id="@+id/txt_AccountNumber"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lbl_AccountNumber"
+        android:layout_below="@+id/lbl_AccountNumber"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/lbl_AccountNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txt_BranchCode"
+        android:layout_below="@+id/txt_BranchCode"
+        android:layout_marginTop="16dp"
+        android:text="Account Number"
+        android:textColor="@color/EMC_blue" />
+
+    <EditText
+        android:id="@+id/txt_ChequeAmount"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txt_AccountNumber"
+        android:layout_below="@+id/lbl_ChequeAmount"
+        android:ems="10"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/txt_Cheque_Reference"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lbl_ChequeReference"
+        android:layout_below="@+id/lbl_ChequeReference"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/lbl_chequedate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txt_chequedate"
+        android:layout_below="@+id/txt_Cheque_Reference"
+        android:layout_marginTop="18dp"
+        android:text="Cheque Date"
+        android:textColor="@color/EMC_blue" />
+
+</RelativeLayout>
+<!-- From: file:/D:/xTools/AndroidStudio/Workspace/EMCMobileBankingxCP/app/src/main/res/layout/activity_cheque_results.xml -->

@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".ViewDocuments"
+    style="@style/AppBaseTheme">
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:textColor="@color/EMC_blue">
+
+        <TextView
+            android:id="@+id/documents"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Documents"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/EMC_blue"
+            android:textSize="35dp" />
+
+        <ListView
+            android:id="@+id/lst_docs"
+            android:layout_width="match_parent"
+            android:layout_height="328dp"
+            android:background="@color/white"
+            android:footerDividersEnabled="false"
+            android:clickable="false"
+            android:choiceMode="singleChoice"
+            android:smoothScrollbar="true"
+            android:theme="@style/AppBaseTheme">
+
+        </ListView>
+
+    </LinearLayout>
+
+</RelativeLayout><!-- From: file:/Users/guinnj/Syncplicity/ING%20RBI%20Mobile%20Capture/Mobile%20App/Source/v002/ING_RBI_POC/EMCMobileBankingxCP/app/src/main/res/layout/activity_view_documents.xml -->
