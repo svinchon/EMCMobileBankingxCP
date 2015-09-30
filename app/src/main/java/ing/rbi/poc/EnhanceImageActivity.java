@@ -85,29 +85,38 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
                     int imageHeight = (Integer)properties.get(CaptureImage.IMAGE_PROPERTY_HEIGHT);
                     //int imageHeight = (Integer)properties.get(CaptureImage.);
                     Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - " + imageWidth + "x" + imageHeight);
+                    // new size
+                    int targetWidth = 640;
+                    int targetHeight = 480;
                     boolean isPortrait;
                     float format = (float)imageWidth/imageHeight;
-                    float target_max_format = (float)640/480;
-                    int imageWidthNew = 640;
-                    int imageHeightNew = 480;
+                    float target_max_format = (float)targetWidth/targetHeight;
+                    int imageWidthNew = targetWidth;
+                    int imageHeightNew = targetHeight;
                     if (format > 1 ) {
                         isPortrait = false;
                         if (format > target_max_format) {
                             Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - landscape and large");
-                            imageWidthNew = 640;
-                            imageHeightNew = imageHeight / imageWidth * 480;
+                            imageWidthNew = targetWidth;
+                            imageHeightNew = imageHeight / imageWidth * targetHeight;
                         } else {
                             Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - landscape and not large");
-                            imageHeightNew = 480;
-                            imageWidthNew = imageWidth / imageHeight * 640;
+                            imageHeightNew = targetHeight;
+                            imageWidthNew = imageWidth / imageHeight * targetWidth;
                         }
                     } else {
                         // TODO: code when portrait image
                         isPortrait = true;
-                        Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - portrait");
+                        if (format > target_max_format) {
+                            Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - portrait");
+                            imageWidthNew = targetHeight;
+                            imageHeightNew = imageHeight / imageWidth * targetWidth;
+                        } else {
+                            Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - portrait");
+                            imageHeightNew = targetWidth;
+                            imageWidthNew = imageWidth / imageHeight * targetHeight;
+                        }
                     }
-                    // new size
-
                     HashMap<String, Object> parameters = new HashMap<String, Object>();
                     //parameters.put(CaptureImage.FILTER_PARAM_RESIZE_WIDTH, (int)(imageWidth * 0.80));
                     //parameters.put(CaptureImage.FILTER_PARAM_RESIZE_HEIGHT, (int) (imageHeight * 0.80));
