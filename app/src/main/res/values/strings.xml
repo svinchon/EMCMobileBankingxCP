@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="Menu_EnhanceForMe">Enhance For Me!</string>
     <string name="Menu_QuadCrop">Quad Crop</string>
     <string name="URI">URI Address</string>
     <string name="URI_TITLE">Server Address</string>

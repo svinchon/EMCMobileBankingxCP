@@ -152,7 +152,7 @@ private Boolean Connect() {
 		String[] CaptureFlowlist = null;
 		//Set the URI to be the tables and just get the name of the CaptureFlows back
 		String TablesUri = uri + "/tables/captureflows?view=Name";
-				
+
 		try {
 			DefaultHttpClient client = new DefaultHttpClient();
 			HttpGet request = new HttpGet(TablesUri);
@@ -230,8 +230,14 @@ private Boolean Connect() {
 			HttpResponse response = client.execute(request);
 			String strResponse = EntityUtils.toString(response.getEntity(), "UTF8");
 			Gson gsonResponse = new Gson();
-			loginResponse LoginResponse = gsonResponse.fromJson(strResponse, loginResponse.class);
-			
+            loginResponse LoginResponse = null;
+            try {
+                LoginResponse = gsonResponse.fromJson(strResponse, loginResponse.class);
+            } catch (Exception e) {
+                //System.out.println("XXXX");
+                Log.d("======> SEB", "Error reading return of REST call. Is your VPN up?");
+            }
+
 			//Get the ticket back
 			// should test if strResponse not empty first!
 			if (LoginResponse != null)
@@ -256,8 +262,6 @@ private Boolean Connect() {
 		return ticket;
 	}
 		
-
-	
 	@Override
 	protected void onPostExecute(Object result) {
 		// TODO Auto-generated method stub

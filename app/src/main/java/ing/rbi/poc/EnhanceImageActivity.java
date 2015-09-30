@@ -66,6 +66,63 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
         int menuID = item.getItemId();
 		try {
 			switch (menuID) {
+				case ing.rbi.poc.R.id.EnhanceForMe: {
+
+                    startEdit();
+
+                    // prefs
+					SharedPreferences gprefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+                    // auto crop
+                    CaptureImage.applyFilters(new String[] { CaptureImage.FILTER_CROP }, getAutoCropPadding());
+
+                    // resize
+                    // current size
+                    Map<String, Object> properties = CaptureImage.getImageProperties();
+                    int imageWidth = (Integer)properties.get(CaptureImage.IMAGE_PROPERTY_WIDTH);
+                    int imageHeight = (Integer)properties.get(CaptureImage.IMAGE_PROPERTY_HEIGHT);
+                    Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - " + imageWidth + "x" + imageHeight);
+                    boolean isPortrait;
+                    float format = (float)imageWidth/imageHeight;
+                    float target_max_format = (float)640/480;
+                    int imageWidthNew = 640;
+                    int imageHeightNew = 480;
+                    if (format > 1 ) {
+                        isPortrait = false;
+                        if (format > target_max_format) {
+                            Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - landscape and large");
+                            imageWidthNew = 640;
+                            imageHeightNew = imageHeight / imageWidth * 640;
+                        } else {
+                            Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - landscape and not large");
+                            imageHeightNew = 480;
+                            imageWidthNew = imageWidth / imageHeight * 480;
+                        }
+                    } else {
+                        // TODO: code when portrait image
+                        isPortrait = true;
+                        Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - portrait");
+                    }
+                    // new size
+
+                    HashMap<String, Object> parameters = new HashMap<String, Object>();
+                    //parameters.put(CaptureImage.FILTER_PARAM_RESIZE_WIDTH, (int)(imageWidth * 0.80));
+                    //parameters.put(CaptureImage.FILTER_PARAM_RESIZE_HEIGHT, (int) (imageHeight * 0.80));
+                    parameters.put(CaptureImage.FILTER_PARAM_RESIZE_WIDTH, (int)(imageWidthNew));
+                    parameters.put(CaptureImage.FILTER_PARAM_RESIZE_HEIGHT, (int) (imageHeightNew));
+                    Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - " + imageWidthNew + "x" + imageHeightNew);
+                    // apply
+                    CaptureImage.applyFilters(new String[]{CaptureImage.FILTER_RESIZE}, parameters);
+
+                    // deskew
+					//applySlowFilter(CaptureImage.FILTER_PERSPECTIVE);
+
+                    // B & W
+					//applySlowFilter(CaptureImage.FILTER_ADAPTIVE_BINARY);
+
+    				break;
+				}
+				/*
 				case ing.rbi.poc.R.id.ABQuadCrop: {
 					// Get the parameters to set up the quadrilateral crop.
 					SharedPreferences gprefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -94,7 +151,7 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 			       startActivity(intent);
 			       break;
 				}
-				
+				*/
 				case ing.rbi.poc.R.id.ABBlackWhite: {
 				    // Apply the adaptive black and white filter.					
 					applySlowFilter(CaptureImage.FILTER_ADAPTIVE_BINARY);					
@@ -112,7 +169,7 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 					applySlowFilter(CaptureImage.FILTER_PERSPECTIVE);
 					break;
 				}
-				
+				/*
 				case ing.rbi.poc.R.id.ABResize: {
 				    // Resize the image to minus 200 pixels.
 					startEdit();
@@ -142,11 +199,13 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 				}
 				
 				case ing.rbi.poc.R.id.ABCrop: {
+
 				    // Launch image cropping activity.
 				    Intent intent = new Intent(this, EnhanceImageCropActivity.class);
 				    startActivityForResult(intent, ing.rbi.poc.R.id.ABCrop);
 					break;
 				}
+				*/
 				
 				case ing.rbi.poc.R.id.ABAutoCrop: {
 				    // Apply the auto-cropping operation.

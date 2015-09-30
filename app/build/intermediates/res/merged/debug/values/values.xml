@@ -141,6 +141,7 @@
     <string name="Menu_Crop">Crop</string>
     <string name="Menu_Delete">Delete</string>
     <string name="Menu_Deskew">Deskew</string>
+    <string name="Menu_EnhanceForMe">Enhance For Me!</string>
     <string name="Menu_GetInfo">Get Information</string>
     <string name="Menu_Gray">Gray</string>
     <string name="Menu_ImageLabel">Image Label</string>
