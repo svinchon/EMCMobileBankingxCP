@@ -46,7 +46,7 @@ public class CreateBatchTabbed extends Activity {
         viewDocsTab.setTabListener(new MyTabListener(viewDocumentsFragment));
 
         actionBar.addTab(createTab);
-        // TODO turn hotfix by SEB into clean code
+        // TODO SEB change to hide tab
         //actionBar.addTab(viewDocsTab);
 
     }

@@ -67,7 +67,7 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 		try {
 			switch (menuID) {
 
-                // TODO turn quick fix by SEB into clean code
+                // TODO SEB call enhance method manually
 				case ing.rbi.poc.R.id.EnhanceForMe: {
                     enhanceForMe();
     				break;
@@ -513,7 +513,7 @@ CoreHelper.displayError(this, e, listener);
                     AddPID._newLoad = false;
                     mediaSelectedHandler.setNewLoadForImage(false);
                 }
-                // TODO turn hotfix added by SEB into clean Code
+                // TODO SEB call enhance method automatically
                 // added for enhance to be called by default
                 enhanceForMe();
 
