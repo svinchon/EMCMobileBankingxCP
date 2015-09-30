@@ -17,6 +17,8 @@ import uk.co.josephearl.foundry.FoundryLayoutInflater;
 
 public class CreateBatchTabbed extends Activity {
 
+
+
     ActionBar actionBar;
     ActionBar.Tab createTab, viewDocsTab;
     country_list createFragment;
