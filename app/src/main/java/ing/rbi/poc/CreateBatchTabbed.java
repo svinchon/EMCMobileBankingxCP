@@ -22,7 +22,6 @@ public class CreateBatchTabbed extends Activity {
     country_list createFragment;
     Fragment viewDocumentsFragment;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
