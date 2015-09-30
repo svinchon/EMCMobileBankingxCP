@@ -66,6 +66,8 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
         int menuID = item.getItemId();
 		try {
 			switch (menuID) {
+
+                // TODO turn quick fix by SEB into clean code
 				case ing.rbi.poc.R.id.EnhanceForMe: {
 
                     startEdit();
@@ -81,6 +83,7 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
                     Map<String, Object> properties = CaptureImage.getImageProperties();
                     int imageWidth = (Integer)properties.get(CaptureImage.IMAGE_PROPERTY_WIDTH);
                     int imageHeight = (Integer)properties.get(CaptureImage.IMAGE_PROPERTY_HEIGHT);
+                    //int imageHeight = (Integer)properties.get(CaptureImage.);
                     Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - " + imageWidth + "x" + imageHeight);
                     boolean isPortrait;
                     float format = (float)imageWidth/imageHeight;
@@ -92,11 +95,11 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
                         if (format > target_max_format) {
                             Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - landscape and large");
                             imageWidthNew = 640;
-                            imageHeightNew = imageHeight / imageWidth * 640;
+                            imageHeightNew = imageHeight / imageWidth * 480;
                         } else {
                             Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - landscape and not large");
                             imageHeightNew = 480;
-                            imageWidthNew = imageWidth / imageHeight * 480;
+                            imageWidthNew = imageWidth / imageHeight * 640;
                         }
                     } else {
                         // TODO: code when portrait image

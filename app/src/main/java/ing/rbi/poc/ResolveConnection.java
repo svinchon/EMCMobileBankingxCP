@@ -231,6 +231,7 @@ private Boolean Connect() {
 			String strResponse = EntityUtils.toString(response.getEntity(), "UTF8");
 			Gson gsonResponse = new Gson();
             loginResponse LoginResponse = null;
+            // TODO turn quick changes by SEB into clean code
             try {
                 LoginResponse = gsonResponse.fromJson(strResponse, loginResponse.class);
             } catch (Exception e) {
