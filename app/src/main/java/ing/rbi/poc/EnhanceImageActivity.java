@@ -86,8 +86,8 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
                     //int imageHeight = (Integer)properties.get(CaptureImage.);
                     Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - " + imageWidth + "x" + imageHeight);
                     // new size
-                    int targetWidth = 640;
-                    int targetHeight = 480;
+                    int targetWidth = 1024;
+                    int targetHeight = 768;
                     boolean isPortrait;
                     float format = (float)imageWidth/imageHeight;
                     float target_max_format = (float)targetWidth/targetHeight;
@@ -105,7 +105,6 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
                             imageWidthNew = imageWidth / imageHeight * targetWidth;
                         }
                     } else {
-                        // TODO: code when portrait image
                         isPortrait = true;
                         if (format > target_max_format) {
                             Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - portrait");
@@ -157,13 +156,14 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 					CaptureImage.showQuadrilateralCrop(this, quadCropParams);
 					break;
 				}
-			    case ing.rbi.poc.R.id.ABInfo: {
+			    */
+                case ing.rbi.poc.R.id.ABInfo: {
 				   // Launch the image info activity.
 				   Intent intent = new Intent(this, ImageInfoActivity.class);
 			       startActivity(intent);
 			       break;
 				}
-				*/
+
 				case ing.rbi.poc.R.id.ABBlackWhite: {
 				    // Apply the adaptive black and white filter.					
 					applySlowFilter(CaptureImage.FILTER_ADAPTIVE_BINARY);					
@@ -197,7 +197,7 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 					CaptureImage.applyFilters(new String[] { CaptureImage.FILTER_RESIZE }, parameters);
 					break;
 				}
-				
+				*/
 				case ing.rbi.poc.R.id.ABRotate180:
 				case ing.rbi.poc.R.id.ABRotateLeft:
 				case ing.rbi.poc.R.id.ABRotateRight: {
@@ -209,7 +209,7 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 					_imageView.setImageBitmap(getImage());
 					break;
 				}
-				
+				/*
 				case ing.rbi.poc.R.id.ABCrop: {
 
 				    // Launch image cropping activity.

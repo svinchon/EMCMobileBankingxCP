@@ -57,12 +57,15 @@ int drawable white_logo_large 0x7f020029
 int drawable whiteborder_button 0x7f02002a
 int id ABAutoCrop 0x7f090093
 int id ABBlackWhite 0x7f090092
-int id ABCrop 0x7f090097
+int id ABCrop 0x7f09009b
 int id ABDeskew 0x7f090094
 int id ABGray 0x7f090095
+int id ABInfo 0x7f090099
 int id ABMainGroup 0x7f090090
-int id ABQuadCrop 0x7f090096
-int id ABRotateLeft 0x7f090098
+int id ABQuadCrop 0x7f09009a
+int id ABRotate180 0x7f090096
+int id ABRotateLeft 0x7f090097
+int id ABRotateRight 0x7f090098
 int id BackButton 0x7f090037
 int id BillReference 0x7f09000c
 int id BillValue 0x7f09000d
@@ -90,7 +93,7 @@ int id TopBar 0x7f090036
 int id TopBarLabel 0x7f090038
 int id UndoAllButton 0x7f09003d
 int id VersionLabel 0x7f090047
-int id action_settings 0x7f090099
+int id action_settings 0x7f09009c
 int id add_back_of_cheque_media_buttons 0x7f090071
 int id add_back_of_cheque_proceed 0x7f090072
 int id add_bill 0x7f090061

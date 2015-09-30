@@ -35,7 +35,7 @@
 	    <!--item
 	        android:id="@+id/ABResize"
 	        android:orderInCategory="108"
-	        android:title="@string/Menu_Resize" />
+	        android:title="@string/Menu_Resize" /-->
 	    <item
 	        android:id="@+id/ABRotate180"
 	        android:orderInCategory="109"
@@ -52,7 +52,7 @@
 	        android:id="@+id/ABInfo"
 	        android:orderInCategory="112"
 	        android:title="@string/Menu_GetInfo">
-	    </item-->
+	    </item>
     </group>
 </menu>
 <!-- From: file:/D:/xTools/AndroidStudio/Workspace/EMCMobileBankingxCP/app/src/main/res/menu/activity_enhance_image.xml -->
