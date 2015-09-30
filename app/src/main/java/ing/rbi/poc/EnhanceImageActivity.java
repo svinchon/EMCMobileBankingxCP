@@ -72,7 +72,6 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
                     enhanceForMe();
     				break;
 				}
-				/*
 				case ing.rbi.poc.R.id.ABQuadCrop: {
 					// Get the parameters to set up the quadrilateral crop.
 					SharedPreferences gprefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -95,32 +94,27 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 					CaptureImage.showQuadrilateralCrop(this, quadCropParams);
 					break;
 				}
-			    */
                 case ing.rbi.poc.R.id.ABInfo: {
 				   // Launch the image info activity.
 				   Intent intent = new Intent(this, ImageInfoActivity.class);
 			       startActivity(intent);
 			       break;
 				}
-
 				case ing.rbi.poc.R.id.ABBlackWhite: {
 				    // Apply the adaptive black and white filter.					
 					applySlowFilter(CaptureImage.FILTER_ADAPTIVE_BINARY);					
 					break;
 				}
-				
 				case ing.rbi.poc.R.id.ABGray: {
 				    // Apply the gray scale filter.
 					applySlowFilter(CaptureImage.FILTER_GRAYSCALE);
 					break;
 				}
-				
 				case ing.rbi.poc.R.id.ABDeskew: {
 				    // Apply the deskew/perspective filter.
 					applySlowFilter(CaptureImage.FILTER_PERSPECTIVE);
 					break;
 				}
-				/*
 				case ing.rbi.poc.R.id.ABResize: {
 				    // Resize the image to minus 200 pixels.
 					startEdit();
@@ -136,7 +130,6 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 					CaptureImage.applyFilters(new String[] { CaptureImage.FILTER_RESIZE }, parameters);
 					break;
 				}
-				*/
 				case ing.rbi.poc.R.id.ABRotate180:
 				case ing.rbi.poc.R.id.ABRotateLeft:
 				case ing.rbi.poc.R.id.ABRotateRight: {
@@ -148,7 +141,6 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 					_imageView.setImageBitmap(getImage());
 					break;
 				}
-				/*
 				case ing.rbi.poc.R.id.ABCrop: {
 
 				    // Launch image cropping activity.
@@ -156,7 +148,6 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 				    startActivityForResult(intent, ing.rbi.poc.R.id.ABCrop);
 					break;
 				}
-				*/
 				
 				case ing.rbi.poc.R.id.ABAutoCrop: {
 				    // Apply the auto-cropping operation.

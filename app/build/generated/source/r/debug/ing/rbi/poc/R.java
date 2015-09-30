@@ -83,17 +83,18 @@ containing a value of this type.
         public static final int whiteborder_button=0x7f02002a;
     }
     public static final class id {
-        public static final int ABAutoCrop=0x7f090093;
-        public static final int ABBlackWhite=0x7f090092;
-        public static final int ABCrop=0x7f09009b;
-        public static final int ABDeskew=0x7f090094;
-        public static final int ABGray=0x7f090095;
-        public static final int ABInfo=0x7f090099;
+        public static final int ABAutoCrop=0x7f090095;
+        public static final int ABBlackWhite=0x7f090094;
+        public static final int ABCrop=0x7f090096;
+        public static final int ABDeskew=0x7f090097;
+        public static final int ABGray=0x7f090098;
+        public static final int ABInfo=0x7f09009c;
         public static final int ABMainGroup=0x7f090090;
-        public static final int ABQuadCrop=0x7f09009a;
-        public static final int ABRotate180=0x7f090096;
-        public static final int ABRotateLeft=0x7f090097;
-        public static final int ABRotateRight=0x7f090098;
+        public static final int ABQuadCrop=0x7f090093;
+        public static final int ABResize=0x7f090099;
+        public static final int ABRotate180=0x7f09009a;
+        public static final int ABRotateLeft=0x7f090091;
+        public static final int ABRotateRight=0x7f09009b;
         public static final int BackButton=0x7f090037;
         public static final int BillReference=0x7f09000c;
         public static final int BillValue=0x7f09000d;
@@ -105,7 +106,7 @@ containing a value of this type.
         public static final int CropSubmitButton=0x7f090041;
         public static final int CropView=0x7f09003f;
         public static final int DeviceIDLabel=0x7f090042;
-        public static final int EnhanceForMe=0x7f090091;
+        public static final int EnhanceForMe=0x7f090092;
         public static final int EnhanceLayout=0x7f090035;
         public static final int ImageBar=0x7f09003a;
         public static final int ImageBitsPerPixelsLabel=0x7f090046;
@@ -121,7 +122,7 @@ containing a value of this type.
         public static final int TopBarLabel=0x7f090038;
         public static final int UndoAllButton=0x7f09003d;
         public static final int VersionLabel=0x7f090047;
-        public static final int action_settings=0x7f09009c;
+        public static final int action_settings=0x7f09009d;
         public static final int add_back_of_cheque_media_buttons=0x7f090071;
         public static final int add_back_of_cheque_proceed=0x7f090072;
         public static final int add_bill=0x7f090061;

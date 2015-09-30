@@ -47,7 +47,8 @@ public class CreateBatchTabbed extends Activity {
         viewDocsTab.setTabListener(new MyTabListener(viewDocumentsFragment));
 
         actionBar.addTab(createTab);
-        actionBar.addTab(viewDocsTab);
+        // TODO turn hotfix by SEB into clean code
+        //actionBar.addTab(viewDocsTab);
 
     }
 
@@ -108,6 +109,7 @@ public class CreateBatchTabbed extends Activity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
     private LayoutInflater foundryLayoutInflater;
 
     @Override

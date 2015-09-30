@@ -103,7 +103,7 @@
     <string name="Menu_BlackWhite">Black-White</string>
     <string name="Menu_Gray">Gray</string>
     <string name="Menu_Deskew">Deskew</string>
-    <string name="Menu_RotateLeft">Rotate Left</string>
+    <string name="Menu_RotateLeft">Rotate 90°</string>
     <string name="Menu_RotateRight">Rotate Right</string>
     <string name="Menu_Crop">Crop</string>
     <string name="Menu_AutoCrop">Auto Crop</string>

@@ -148,7 +148,7 @@
     <string name="Menu_QuadCrop">Quad Crop</string>
     <string name="Menu_Resize">Resize</string>
     <string name="Menu_Rotate180">Rotate 180</string>
-    <string name="Menu_RotateLeft">Rotate Left</string>
+    <string name="Menu_RotateLeft">Rotate 90°</string>
     <string name="Menu_RotateRight">Rotate Right</string>
     <string name="No_Capture_Flow_Selected">No Document Type Selected</string>
     <string name="OK">OK</string>
