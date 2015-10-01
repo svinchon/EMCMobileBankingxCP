@@ -169,6 +169,7 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 		return true;
     }
 
+    // TODO SEB enhance function
     private void enhanceForMe() {
         startEdit();
 
