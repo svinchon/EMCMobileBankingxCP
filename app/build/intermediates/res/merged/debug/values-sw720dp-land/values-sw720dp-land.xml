@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/D:/xTools/AndroidStudio/Workspace/EMCMobileBankingxCP/app/src/main/res/values-sw720dp-land/dimens.xml -->
+    <!-- From: file:/Users/guinnj/Downloads/CaptivaMobileSDK2.0.0%202/Android/EMCMobileBankingxCP/app/src/main/res/values-sw720dp-land/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">128dp</dimen>
 </resources>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-<item
-    android:state_pressed="true"
-    android:drawable="@drawable/check" />
-<item
-    android:state_pressed="false"
-    android:drawable="@drawable/check" />
-</selector><!-- From: file:/D:/xTools/AndroidStudio/Workspace/EMCMobileBankingxCP/app/src/main/res/drawable/check_button.xml -->
+    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_pressed="true"
+        android:drawable="@drawable/check" />
+    <item
+        android:state_pressed="false"
+        android:drawable="@drawable/check" />
+    </selector><!-- From: file:/Users/guinnj/Downloads/CaptivaMobileSDK2.0.0%202/Android/EMCMobileBankingxCP/app/src/main/res/drawable/check_button.xml -->

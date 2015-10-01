@@ -168,4 +168,4 @@
         android:layout_alignRight="@+id/textView2"
         android:layout_alignEnd="@+id/textView2" />
 
-</RelativeLayout><!-- From: file:/D:/xTools/AndroidStudio/Workspace/EMCMobileBankingxCP/app/src/main/res/layout/activity_pidresults.xml -->
+</RelativeLayout><!-- From: file:/Users/guinnj/Downloads/CaptivaMobileSDK2.0.0%202/Android/EMCMobileBankingxCP/app/src/main/res/layout/activity_pidresults.xml -->

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/D:/xTools/AndroidStudio/Workspace/EMCMobileBankingxCP/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/guinnj/Downloads/CaptivaMobileSDK2.0.0%202/Android/EMCMobileBankingxCP/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string-array name="country_array">
         <item/>
@@ -15,10 +15,10 @@
         <item>Passport</item>
         <item>Residence Card</item>
     </string-array>
-    <!-- From: file:/D:/xTools/AndroidStudio/Workspace/EMCMobileBankingxCP/app/build/intermediates/exploded-aar/uk.co.josephearl.foundry/foundry/1.0.4/res/values/values.xml -->
+    <!-- From: file:/Users/guinnj/Downloads/CaptivaMobileSDK2.0.0%202/Android/EMCMobileBankingxCP/app/build/intermediates/exploded-aar/uk.co.josephearl.foundry/foundry/1.0.4/res/values/values.xml -->
     <eat-comment/>
     <attr format="string" name="foundryTypeface"/>
-    <!-- From: file:/D:/xTools/AndroidStudio/Workspace/EMCMobileBankingxCP/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/Users/guinnj/Downloads/CaptivaMobileSDK2.0.0%202/Android/EMCMobileBankingxCP/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="EMC_blue">#2c95dd</color>
     <color name="black">#000</color>
@@ -28,12 +28,12 @@
     <color name="ing_background">#FF6A06</color>
     <color name="ing_button">#FB7B0E</color>
     <color name="white">#FFFFFF</color>
-    <!-- From: file:/D:/xTools/AndroidStudio/Workspace/EMCMobileBankingxCP/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/Users/guinnj/Downloads/CaptivaMobileSDK2.0.0%202/Android/EMCMobileBankingxCP/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="margin_20">20dp</dimen>
-    <!-- From: file:/D:/xTools/AndroidStudio/Workspace/EMCMobileBankingxCP/app/build/intermediates/exploded-aar/captivamobilesdk/res/values/values.xml -->
+    <!-- From: file:/Users/guinnj/Downloads/CaptivaMobileSDK2.0.0%202/Android/EMCMobileBankingxCP/app/build/intermediates/exploded-aar/captivamobilesdk/res/values/values.xml -->
     <eat-comment/>
     <item name="id_buttonlayout" type="id"/>
     <item name="id_capturebutton" type="id"/>
@@ -43,23 +43,23 @@
     <item name="id_quadcropbuttonspace" type="id"/>
     <item name="id_quadcropcropbutton" type="id"/>
     <item name="id_quadcropview" type="id"/>
-    <!-- From: file:/D:/xTools/AndroidStudio/Workspace/EMCMobileBankingxCP/app/src/main/res/values/integers.xml -->
+    <!-- From: file:/Users/guinnj/Downloads/CaptivaMobileSDK2.0.0%202/Android/EMCMobileBankingxCP/app/src/main/res/values/integers.xml -->
     <eat-comment/>
     <integer name="google_play_services_version">0</integer>
-    <!-- From: file:/D:/xTools/AndroidStudio/Workspace/EMCMobileBankingxCP/app/build/intermediates/exploded-aar/uk.co.josephearl.foundry/foundry/1.0.4/res/values/values.xml -->
+    <!-- From: file:/Users/guinnj/Downloads/CaptivaMobileSDK2.0.0%202/Android/EMCMobileBankingxCP/app/build/intermediates/exploded-aar/uk.co.josephearl.foundry/foundry/1.0.4/res/values/values.xml -->
     <eat-comment/>
     <item name="test_layout_custom_view" type="layout"/>
     <item name="test_layout_simple" type="layout"/>
-    <!-- From: file:/D:/xTools/AndroidStudio/Workspace/EMCMobileBankingxCP/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/guinnj/Downloads/CaptivaMobileSDK2.0.0%202/Android/EMCMobileBankingxCP/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="Add_Bill">Pay Bill</string>
     <string name="Bill_Reference">Bill Reference</string>
     <string name="Bill_Value">Bill Value</string>
-    <!-- From: file:/D:/xTools/AndroidStudio/Workspace/EMCMobileBankingxCP/app/build/intermediates/exploded-aar/captivamobilesdk/res/values/values.xml -->
+    <!-- From: file:/Users/guinnj/Downloads/CaptivaMobileSDK2.0.0%202/Android/EMCMobileBankingxCP/app/build/intermediates/exploded-aar/captivamobilesdk/res/values/values.xml -->
     <eat-comment/>
     <string name="Button_Back">Back</string>
     <string name="Button_Crop">Crop</string>
-    <!-- From: file:/D:/xTools/AndroidStudio/Workspace/EMCMobileBankingxCP/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/guinnj/Downloads/CaptivaMobileSDK2.0.0%202/Android/EMCMobileBankingxCP/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="Button_CropSubmit">Submit Crop</string>
     <string name="Button_UndoAll">Undo All</string>
@@ -197,7 +197,7 @@
     <string name="title_activity_resolve_connection">ResolveConnection</string>
     <string name="title_activity_view_documents">View Documents</string>
     <string name="title_create_new_document">Create New Document</string>
-    <!-- From: file:/D:/xTools/AndroidStudio/Workspace/EMCMobileBankingxCP/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/Users/guinnj/Downloads/CaptivaMobileSDK2.0.0%202/Android/EMCMobileBankingxCP/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--

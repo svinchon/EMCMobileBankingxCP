@@ -67,11 +67,74 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 		try {
 			switch (menuID) {
 
-                // TODO SEB call enhance method manually
+                // TODO turn quick fix by SEB into clean code
 				case ing.rbi.poc.R.id.EnhanceForMe: {
-                    enhanceForMe();
+
+                    startEdit();
+
+                    // prefs
+					SharedPreferences gprefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+                    // auto crop
+                    CaptureImage.applyFilters(new String[] { CaptureImage.FILTER_CROP }, getAutoCropPadding());
+
+                    // resize
+                    // current size
+                    Map<String, Object> properties = CaptureImage.getImageProperties();
+                    int imageWidth = (Integer)properties.get(CaptureImage.IMAGE_PROPERTY_WIDTH);
+                    int imageHeight = (Integer)properties.get(CaptureImage.IMAGE_PROPERTY_HEIGHT);
+                    //int imageHeight = (Integer)properties.get(CaptureImage.);
+                    Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - " + imageWidth + "x" + imageHeight);
+                    // new size
+                    int targetWidth = 2560;
+                    int targetHeight = 1920;
+                    boolean isPortrait;
+                    float format = (float)imageWidth/imageHeight;
+                    float target_max_format = (float)targetWidth/targetHeight;
+                    int imageWidthNew = targetWidth;
+                    int imageHeightNew = targetHeight;
+                    if (format > 1 ) {
+                        isPortrait = false;
+                        if (format > target_max_format) {
+                            Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - landscape and large");
+                            imageWidthNew = targetWidth;
+                            imageHeightNew = imageHeight / imageWidth * targetHeight;
+                        } else {
+                            Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - landscape and not large");
+                            imageHeightNew = targetHeight;
+                            imageWidthNew = imageWidth / imageHeight * targetWidth;
+                        }
+                    } else {
+                        // TODO: code when portrait image
+                        isPortrait = true;
+                        if (format > target_max_format) {
+                            Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - portrait");
+                            imageWidthNew = targetHeight;
+                            imageHeightNew = imageHeight / imageWidth * targetWidth;
+                        } else {
+                            Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - portrait");
+                            imageHeightNew = targetWidth;
+                            imageWidthNew = imageWidth / imageHeight * targetHeight;
+                        }
+                    }
+                    HashMap<String, Object> parameters = new HashMap<String, Object>();
+                    //parameters.put(CaptureImage.FILTER_PARAM_RESIZE_WIDTH, (int)(imageWidth * 0.80));
+                    //parameters.put(CaptureImage.FILTER_PARAM_RESIZE_HEIGHT, (int) (imageHeight * 0.80));
+                    parameters.put(CaptureImage.FILTER_PARAM_RESIZE_WIDTH, (int)(imageWidthNew));
+                    parameters.put(CaptureImage.FILTER_PARAM_RESIZE_HEIGHT, (int) (imageHeightNew));
+                    Log.v(TAG, "Enhance Image Operation - " + item.getTitle() + " - " + imageWidthNew + "x" + imageHeightNew);
+                    // apply
+                    CaptureImage.applyFilters(new String[]{CaptureImage.FILTER_RESIZE}, parameters);
+
+                    // deskew
+					//applySlowFilter(CaptureImage.FILTER_PERSPECTIVE);
+
+                    // B & W
+					//applySlowFilter(CaptureImage.FILTER_ADAPTIVE_BINARY);
+
     				break;
 				}
+				/*
 				case ing.rbi.poc.R.id.ABQuadCrop: {
 					// Get the parameters to set up the quadrilateral crop.
 					SharedPreferences gprefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -94,27 +157,31 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 					CaptureImage.showQuadrilateralCrop(this, quadCropParams);
 					break;
 				}
-                case ing.rbi.poc.R.id.ABInfo: {
+			    case ing.rbi.poc.R.id.ABInfo: {
 				   // Launch the image info activity.
 				   Intent intent = new Intent(this, ImageInfoActivity.class);
 			       startActivity(intent);
 			       break;
 				}
+				*/
 				case ing.rbi.poc.R.id.ABBlackWhite: {
 				    // Apply the adaptive black and white filter.					
 					applySlowFilter(CaptureImage.FILTER_ADAPTIVE_BINARY);					
 					break;
 				}
+				
 				case ing.rbi.poc.R.id.ABGray: {
 				    // Apply the gray scale filter.
 					applySlowFilter(CaptureImage.FILTER_GRAYSCALE);
 					break;
 				}
+				
 				case ing.rbi.poc.R.id.ABDeskew: {
 				    // Apply the deskew/perspective filter.
 					applySlowFilter(CaptureImage.FILTER_PERSPECTIVE);
 					break;
 				}
+				/*
 				case ing.rbi.poc.R.id.ABResize: {
 				    // Resize the image to minus 200 pixels.
 					startEdit();
@@ -130,6 +197,7 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 					CaptureImage.applyFilters(new String[] { CaptureImage.FILTER_RESIZE }, parameters);
 					break;
 				}
+				
 				case ing.rbi.poc.R.id.ABRotate180:
 				case ing.rbi.poc.R.id.ABRotateLeft:
 				case ing.rbi.poc.R.id.ABRotateRight: {
@@ -141,6 +209,7 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 					_imageView.setImageBitmap(getImage());
 					break;
 				}
+				
 				case ing.rbi.poc.R.id.ABCrop: {
 
 				    // Launch image cropping activity.
@@ -148,6 +217,7 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 				    startActivityForResult(intent, ing.rbi.poc.R.id.ABCrop);
 					break;
 				}
+				*/
 				
 				case ing.rbi.poc.R.id.ABAutoCrop: {
 				    // Apply the auto-cropping operation.
@@ -169,68 +239,7 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 		return true;
     }
 
-    private void enhanceForMe() {
-        startEdit();
-
-        // prefs
-        SharedPreferences gprefs = PreferenceManager.getDefaultSharedPreferences(this);
-
-        // auto crop
-        CaptureImage.applyFilters(new String[] { CaptureImage.FILTER_CROP }, getAutoCropPadding());
-
-        // resize
-        // current size
-        Map<String, Object> properties = CaptureImage.getImageProperties();
-        int imageWidth = (Integer)properties.get(CaptureImage.IMAGE_PROPERTY_WIDTH);
-        int imageHeight = (Integer)properties.get(CaptureImage.IMAGE_PROPERTY_HEIGHT);
-        //int imageHeight = (Integer)properties.get(CaptureImage.);
-        Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - " + imageWidth + "x" + imageHeight);
-        // new size
-        int targetWidth = 1024;
-        int targetHeight = 768;
-        boolean isPortrait;
-        float format = (float)imageWidth/imageHeight;
-        float target_max_format = (float)targetWidth/targetHeight;
-        int imageWidthNew = targetWidth;
-        int imageHeightNew = targetHeight;
-        if (format > 1 ) {
-            isPortrait = false;
-            if (format > target_max_format) {
-                Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - landscape and large");
-                imageWidthNew = targetWidth;
-                imageHeightNew = imageHeight / imageWidth * targetHeight;
-            } else {
-                Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - landscape and not large");
-                imageHeightNew = targetHeight;
-                imageWidthNew = imageWidth / imageHeight * targetWidth;
-            }
-        } else {
-            isPortrait = true;
-            if (format > target_max_format) {
-                Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - portrait");
-                imageWidthNew = targetHeight;
-                imageHeightNew = imageHeight / imageWidth * targetWidth;
-            } else {
-                Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - portrait");
-                imageHeightNew = targetWidth;
-                imageWidthNew = imageWidth / imageHeight * targetHeight;
-            }
-        }
-        HashMap<String, Object> parameters = new HashMap<String, Object>();
-        parameters.put(CaptureImage.FILTER_PARAM_RESIZE_WIDTH, (int)(imageWidthNew));
-        parameters.put(CaptureImage.FILTER_PARAM_RESIZE_HEIGHT, (int) (imageHeightNew));
-        Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - " + imageWidthNew + "x" + imageHeightNew);
-        // apply
-        CaptureImage.applyFilters(new String[]{CaptureImage.FILTER_RESIZE}, parameters);
-
-        // deskew
-        //applySlowFilter(CaptureImage.FILTER_PERSPECTIVE);
-
-        // B & W
-        //applySlowFilter(CaptureImage.FILTER_ADAPTIVE_BINARY);
-    }
-
-    /**
+	/**
 	 * The Undo All button handler. This will revert any changes made.
 	 * @param view    The view for the control event.
 	 */
@@ -513,10 +522,7 @@ CoreHelper.displayError(this, e, listener);
                     AddPID._newLoad = false;
                     mediaSelectedHandler.setNewLoadForImage(false);
                 }
-                // TODO SEB call enhance method automatically
-                // added for enhance to be called by default
-                enhanceForMe();
-
+				
 				_imageView.setImageBitmap(getImage());
             }
             catch (Exception e) {
