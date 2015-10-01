@@ -2,6 +2,11 @@
 <resources>
     <!-- From: file:/D:/xTools/AndroidStudio/Workspace/EMCMobileBankingxCP/app/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string-array name="GPREF_CAPTURE_CUSTOM_OPTIONS_VALUES">
+        <item>@string/GPREF_CAPTURE_CUSTOM_OPTIONS_NONE</item>
+        <item>@string/GPREF_CAPTURE_CUSTOM_OPTIONS_EXTEND</item>
+        <item>@string/GPREF_CAPTURE_CUSTOM_OPTIONS_REPLACE</item>
+    </string-array>
     <string-array name="country_array">
         <item/>
         <item>Netherlands</item>
@@ -76,6 +81,9 @@
     <string name="GPREF_CAPTURETIMEOUT">GPREF_CAPTURETIMEOUT</string>
     <string name="GPREF_CAPTURETIMEOUT_SUMMARY">A positive integer representing the time (ms) to wait for optimal conditions before taking the picture. A value of 0 (default) indicates no wait.</string>
     <string name="GPREF_CAPTURETIMEOUT_TITLE">Capture Timeout</string>
+    <string name="GPREF_CAPTURE_CUSTOM_OPTIONS_EXTEND">Extend</string>
+    <string name="GPREF_CAPTURE_CUSTOM_OPTIONS_NONE">None</string>
+    <string name="GPREF_CAPTURE_CUSTOM_OPTIONS_REPLACE">Replace</string>
     <string name="GPREF_CAPTURE_GROUP">GPREF_CAPTURE_GROUP</string>
     <string name="GPREF_CAPTURE_GROUP_TITLE">Capture Settings</string>
     <string name="GPREF_CAPTURINGLABEL">GPREF_CAPTURINGLABEL</string>
