@@ -66,7 +66,7 @@ public class MediaButtonClickHandler implements View.OnClickListener, PictureCal
     private void handleCamera(View view) {
         // Launch the camera to take a picture.
         HashMap<String, Object> parameters = CoreHelper.getTakePictureParametersFromPrefs(contextWeakReference.get());
-        // TODO SEB add positioning window and flags for torch
+        // TODO SEB add positioning window and add flags for torch
         CaptureWindow wnd;
         //wnd = new SVPositioningView(view.getContext());
         //parameters.put(CaptureImage.PICTURE_CAPTUREWINDOW, wnd);
