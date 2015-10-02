@@ -15,7 +15,7 @@
             android:key="@string/URI"
             android:title="@string/URI_TITLE"
             android:summary="@string/URI_SUMMARY"
-            android:defaultValue="http://fsi-ccp-emea-demo.spdns.org" />
+            android:defaultValue="http://fsi-ccp-emea-demo.spdns.org/cp-rest" />
         <EditTextPreference
             android:key="@string/customer_name"
             android:title="@string/customer_name_title"
@@ -60,7 +60,7 @@
             android:key="@string/GPREF_SENSOR_LIGHT_VALUE"
             android:title="@string/GPREF_SENSOR_LIGHT_VALUE_TITLE"
             android:summary="@string/GPREF_SENSOR_LIGHT_VALUE_SUMMARY"
-            android:defaultValue="50" />
+            android:defaultValue="1" />
         <CheckBoxPreference
             android:key="@string/GPREF_SENSOR_MOTION"
             android:title="@string/GPREF_SENSOR_MOTION_TITLE"
@@ -70,7 +70,7 @@
             android:key="@string/GPREF_SENSOR_MOTION_VALUE"
             android:title="@string/GPREF_SENSOR_MOTION_VALUE_TITLE"
             android:summary="@string/GPREF_SENSOR_MOTION_VALUE_SUMMARY"
-            android:defaultValue=".30" />
+            android:defaultValue="2.0" />
         <CheckBoxPreference
             android:key="@string/GPREF_SENSOR_FOCUS"
             android:title="@string/GPREF_SENSOR_FOCUS_TITLE"
@@ -80,7 +80,7 @@
             android:key="@string/GPREF_GUIDELINES"
             android:title="@string/GPREF_GUIDELINES_TITLE"
             android:summary="@string/GPREF_GUIDELINES_SUMMARY"
-            android:defaultValue="false" />
+            android:defaultValue="true" />
         <CheckBoxPreference
             android:key="@string/GPREF_CANCEL"
             android:title="@string/GPREF_CANCEL_TITLE"
@@ -100,7 +100,7 @@
             android:key="@string/GPREF_OPTIMALCONDREQ"
             android:title="@string/GPREF_OPTIMALCONDREQ_TITLE"
             android:summary="@string/GPREF_OPTIMALCONDREQ_SUMMARY"
-            android:defaultValue="false" />      
+            android:defaultValue="true" />
         <EditTextPreference
             android:key="@string/GPREF_IMAGEFORMAT"
             android:title="@string/GPREF_IMAGEFORMAT_TITLE"
@@ -125,6 +125,6 @@
             android:key="@string/GPREF_FILTER_CROP_PADDING"
             android:title="@string/GPREF_FILTER_CROP_PADDING_TITLE"
             android:summary="@string/GPREF_FILTER_CROP_PADDING_SUMMARY"
-            android:defaultValue="0.0" />        
+            android:defaultValue="0.05" />
     </PreferenceCategory>
 </PreferenceScreen>
