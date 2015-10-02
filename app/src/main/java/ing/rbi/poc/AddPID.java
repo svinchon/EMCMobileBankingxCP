@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import emc.captiva.mobile.sdk.CaptureImage;
+import emc.captiva.mobile.sdk.CaptureWindow;
 import emc.captiva.mobile.sdk.PictureCallback;
 import android.net.Uri;
 import android.os.Bundle;
@@ -60,7 +61,8 @@ public class AddPID extends Activity implements PictureCallback {
 	public void onTakePicture(View view) {
 		// Launch the camera to take a picture.
 		HashMap<String, Object> parameters = CoreHelper.getTakePictureParametersFromPrefs(this);
-        CaptureImage.takePicture(this, parameters);	
+		// TODO SEB pid take picture
+		CaptureImage.takePicture(this, parameters);
 	}
 
 	@Override

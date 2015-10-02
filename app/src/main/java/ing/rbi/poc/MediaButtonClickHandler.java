@@ -18,6 +18,7 @@ import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
 import emc.captiva.mobile.sdk.CaptureImage;
+import emc.captiva.mobile.sdk.CaptureWindow;
 import emc.captiva.mobile.sdk.PictureCallback;
 
 /**
@@ -45,7 +46,9 @@ public class MediaButtonClickHandler implements View.OnClickListener, PictureCal
     public void onClick(View view) {
         Button clickedButton = (Button) view;
         if(clickedButton.getText().equals("Camera")){
-            handleCamera();
+            // TODO SEB
+            // handleCamera();
+            handleCamera(view);
         }
         else if(clickedButton.getText().equals("Gallery")){
             handleGallery();
@@ -60,9 +63,26 @@ public class MediaButtonClickHandler implements View.OnClickListener, PictureCal
         fragment.startActivityForResult(Intent.createChooser(intent, "Select Image"), Constants.EVENT_CHOOSE_IMAGE);
     }
 
-    private void handleCamera() {
+    private void handleCamera(View view) {
         // Launch the camera to take a picture.
         HashMap<String, Object> parameters = CoreHelper.getTakePictureParametersFromPrefs(contextWeakReference.get());
+        // TODO SEB add positioning window and add flags for torch
+        CaptureWindow wnd;
+        //wnd = new SVPositioningView(view.getContext());
+        //parameters.put(CaptureImage.PICTURE_CAPTUREWINDOW, wnd);
+        HashMap<String, Object> appParams = new HashMap<>();
+        // TODO SEB this custom window has en ellipse and a box that goes for id card
+        if (myFlowType.equals("SPAIN_ID")) {
+            SVCustomWindow_ID svcw1;
+            svcw1 = new SVCustomWindow_ID(this.contextWeakReference.get(), "none", appParams);
+            parameters.put(CaptureImage.PICTURE_CAPTUREWINDOW, svcw1);
+        } else if (myFlowType.equals("PROOF_ID")) {
+            SVCustomWindow_PASSPORT svcw1;
+            svcw1 = new SVCustomWindow_PASSPORT(this.contextWeakReference.get(), "none", appParams);
+            parameters.put(CaptureImage.PICTURE_CAPTUREWINDOW, svcw1);
+        }
+        parameters.put(CaptureImage.PICTURE_BUTTON_TORCH, true);
+        parameters.put(CaptureImage.PICTURE_TORCH, false);
         CaptureImage.takePicture(this, parameters);
     }
 

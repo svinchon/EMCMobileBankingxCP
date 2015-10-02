@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="Menu_EnhanceForMe">Enhance For Me!</string>
+    <string name="GPREF_CAPTURE_CUSTOM_OPTIONS_NONE">None</string>
+    <string name="GPREF_CAPTURE_CUSTOM_OPTIONS_EXTEND">Extend</string>
+    <string name="GPREF_CAPTURE_CUSTOM_OPTIONS_REPLACE">Replace</string>
+    <string-array name="GPREF_CAPTURE_CUSTOM_OPTIONS_VALUES">
+        <item>@string/GPREF_CAPTURE_CUSTOM_OPTIONS_NONE</item>
+        <item>@string/GPREF_CAPTURE_CUSTOM_OPTIONS_EXTEND</item>
+        <item>@string/GPREF_CAPTURE_CUSTOM_OPTIONS_REPLACE</item>
+    </string-array>
     <string name="Menu_QuadCrop">Quad Crop</string>
     <string name="URI">URI Address</string>
     <string name="URI_TITLE">Server Address</string>

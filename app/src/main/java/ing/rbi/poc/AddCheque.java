@@ -78,8 +78,9 @@ private Boolean FrontTaken = false;
 			 HashMap<String, Object> parameters = CoreHelper.getTakePictureParametersFromPrefs(this);
 		        
 		        // Launch the camera to take a picture.
-				
-		        CaptureImage.takePicture(this, parameters);	
+
+				// TODO SEB cheque take picture
+			    CaptureImage.takePicture(this, parameters);
 		        //Show the progress bar
 		        ProgressBar pBar = (ProgressBar) findViewById(ing.rbi.poc.R.id.cheque_progressBar);
 		        pBar.setVisibility(1);
