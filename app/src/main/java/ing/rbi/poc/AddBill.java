@@ -83,6 +83,7 @@ private String FileName = "";
 				}
 				else {
 					 // Launch the camera to take a picture.
+					// TODO SEB bill take picture
 			        CaptureImage.takePicture(this, parameters);	
 				}
 		}

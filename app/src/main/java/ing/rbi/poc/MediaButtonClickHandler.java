@@ -71,9 +71,16 @@ public class MediaButtonClickHandler implements View.OnClickListener, PictureCal
         //wnd = new SVPositioningView(view.getContext());
         //parameters.put(CaptureImage.PICTURE_CAPTUREWINDOW, wnd);
         HashMap<String, Object> appParams = new HashMap<>();
-        SVCustomWindow svcw1;
-        svcw1 = new SVCustomWindow(this.contextWeakReference.get(), "none", appParams);
-        parameters.put(CaptureImage.PICTURE_CAPTUREWINDOW, svcw1);
+        // TODO SEB this custom window has en ellipse and a box that goes for id card
+        if (myFlowType.equals("SPAIN_ID")) {
+            SVCustomWindow_ID svcw1;
+            svcw1 = new SVCustomWindow_ID(this.contextWeakReference.get(), "none", appParams);
+            parameters.put(CaptureImage.PICTURE_CAPTUREWINDOW, svcw1);
+        } else if (myFlowType.equals("PROOF_ID")) {
+            SVCustomWindow_PASSPORT svcw1;
+            svcw1 = new SVCustomWindow_PASSPORT(this.contextWeakReference.get(), "none", appParams);
+            parameters.put(CaptureImage.PICTURE_CAPTUREWINDOW, svcw1);
+        }
         parameters.put(CaptureImage.PICTURE_BUTTON_TORCH, true);
         parameters.put(CaptureImage.PICTURE_TORCH, false);
         CaptureImage.takePicture(this, parameters);

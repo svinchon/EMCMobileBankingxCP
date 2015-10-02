@@ -13,7 +13,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 
-public class SVPositioningView extends View {
+public class SVPositioningView_ID extends View {
 
     private final float         RADIUS = 35.0f;
 	private final int           COLOR = 0x7FFF0000;
@@ -21,7 +21,7 @@ public class SVPositioningView extends View {
     private Point               _circleCenter;
 	private Paint               _boundsPaint;
 
-	public SVPositioningView(Context context) {
+	public SVPositioningView_ID(Context context) {
         super(context);
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = windowManager.getDefaultDisplay();

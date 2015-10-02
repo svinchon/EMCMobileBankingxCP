@@ -26,9 +26,9 @@ import emc.captiva.mobile.sdk.PictureCallback;
  * This represents a custom view that will be used to fully replace the
  * SDK's overlay if needed.
  */
-class SVCustomView extends RelativeLayout {
+class SVCustomView_PASSPORT extends RelativeLayout {
 
-    private SVCustomWindow _capWnd = null;
+    private SVCustomWindow_PASSPORT _capWnd = null;
     private Paint _green = new Paint();
     private Paint _white = new Paint();
     private Paint _yellow = new Paint();
@@ -44,7 +44,7 @@ class SVCustomView extends RelativeLayout {
      * Context based constructor to avoid 'missing constructor used for tools' validation warning.
      * @param context The current context.
      */
-    SVCustomView(Context context) {
+    SVCustomView_PASSPORT(Context context) {
         super(context);
     }
 
@@ -53,7 +53,7 @@ class SVCustomView extends RelativeLayout {
      * @param capWnd We pass in our instance of CaptureWindow so that
      *               we can retrieve some state from it.
      */
-    SVCustomView(SVCustomWindow capWnd) {
+    SVCustomView_PASSPORT(SVCustomWindow_PASSPORT capWnd) {
         // Use the Context based constructor instead of super to avoid 'symbol not used' validation warning.
         this(capWnd.getActivity());
 
