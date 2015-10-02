@@ -5,6 +5,7 @@ package ing.rbi.poc; /** -------------------------------------------------------
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
@@ -35,7 +36,7 @@ public class SVPositioningView_ID extends View {
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 		_bounds = new Point[2];
-        int _boxWidthPercent = 80;
+        int _boxWidthPercent = 90;
         int _boxWidth = canvas.getWidth()*_boxWidthPercent/100;
         float _boxWidthHeightRatio = 1.5f;
         int _boxHeight = (int)(_boxWidth / _boxWidthHeightRatio);
@@ -56,6 +57,20 @@ public class SVPositioningView_ID extends View {
                 _bounds[0].y,
                 _bounds[1].x,
                 _bounds[1].y,
+                _boundsPaint
+        );
+        //Paint _boundsPaint.setColor(Color.BLACK);
+        _boundsPaint.setTextSize(40);
+        canvas.drawText(
+                "TOP",
+                (int) (_left),
+                (int) (_top - 20),
+                _boundsPaint
+        );
+        canvas.drawText(
+                "BOTTOM",
+                (int) (_left),
+                (int) (_bottom + 45 ),
                 _boundsPaint
         );
         //_circleCenter = new Point(canvas.getWidth()/4, canvas.getHeight() / 2);
