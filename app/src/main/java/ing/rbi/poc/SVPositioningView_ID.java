@@ -35,14 +35,34 @@ public class SVPositioningView_ID extends View {
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 		_bounds = new Point[2];
-		_bounds[0] = new Point(20, 500);
-		_bounds[1] = new Point(canvas.getWidth()-20, canvas.getHeight()-500);
-		canvas.drawRect(_bounds[0].x, _bounds[0].y, _bounds[1].x, _bounds[1].y, _boundsPaint);
-        _circleCenter = new Point(canvas.getWidth()/4, canvas.getHeight() / 2);
+        int _boxWidthPercent = 80;
+        int _boxWidth = canvas.getWidth()*_boxWidthPercent/100;
+        float _boxWidthHeightRatio = 1.5f;
+        int _boxHeight = (int)(_boxWidth / _boxWidthHeightRatio);
+        int _left = (int)((canvas.getWidth()-_boxWidth)/2);
+        int _top=(int)((canvas.getHeight()-_boxHeight)/2);
+        int _right=(int)((canvas.getWidth()-_boxWidth)/2+_boxWidth);
+        int _bottom=(int)((canvas.getHeight()-_boxHeight)/2+_boxHeight);
+		_bounds[0] = new Point(
+                _left,
+                _top
+        );
+		_bounds[1] = new Point(
+                _right,
+                _bottom
+        );
+		canvas.drawRect(
+                _bounds[0].x,
+                _bounds[0].y,
+                _bounds[1].x,
+                _bounds[1].y,
+                _boundsPaint
+        );
+        //_circleCenter = new Point(canvas.getWidth()/4, canvas.getHeight() / 2);
         //canvas.drawCircle(_circleCenter.x, _circleCenter.y, RADIUS, _boundsPaint);
-        int ovalWidth = 350;
-        int ovalHeight = 400;
-        RectF r = new RectF(_circleCenter.x-ovalWidth/2, _circleCenter.y-ovalHeight/2, _circleCenter.x+ovalWidth/2, _circleCenter.y+ovalHeight/2);
-        canvas.drawOval(r, _boundsPaint);
+        //int ovalWidth = 350;
+        //int ovalHeight = 400;
+        //RectF r = new RectF(_circleCenter.x-ovalWidth/2, _circleCenter.y-ovalHeight/2, _circleCenter.x+ovalWidth/2, _circleCenter.y+ovalHeight/2);
+        //canvas.drawOval(r, _boundsPaint);
     }
 }
