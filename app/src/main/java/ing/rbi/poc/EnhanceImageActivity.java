@@ -176,15 +176,35 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
         // prefs
         SharedPreferences gprefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-        // auto crop
-        CaptureImage.applyFilters(new String[] { CaptureImage.FILTER_CROP }, getAutoCropPadding());
-
-        // resize
-        // current size
         Map<String, Object> properties = CaptureImage.getImageProperties();
         int imageWidth = (Integer)properties.get(CaptureImage.IMAGE_PROPERTY_WIDTH);
         int imageHeight = (Integer)properties.get(CaptureImage.IMAGE_PROPERTY_HEIGHT);
-        //int imageHeight = (Integer)properties.get(CaptureImage.);
+
+        HashMap<String, Object> parameters = new HashMap<String, Object>();
+
+        int _boxWidthPercent = 90;
+        int _boxWidth = imageWidth *_boxWidthPercent/100;
+        float _boxWidthHeightRatio = 1.3f;
+        int _boxHeight = (int)(_boxWidth / _boxWidthHeightRatio);
+        int _left = (int)((imageWidth-_boxWidth)/2);
+        int _top=(int)((imageHeight-_boxHeight)/2);
+        int _right=(int)((imageWidth-_boxWidth)/2+_boxWidth);
+        int _bottom=(int)((imageHeight-_boxHeight)/2+_boxHeight);
+        Rect rect = new Rect(
+                (int)(_left),
+                (int)(_top),
+                (int)(_right),
+                (int)(_bottom)
+        );
+        parameters.put(CaptureImage.FILTER_PARAM_CROP_RECTANGLE, rect);
+        CaptureImage.applyFilters(new String[] { CaptureImage.FILTER_CROP }, parameters);
+
+        // auto crop
+        //CaptureImage.applyFilters(new String[] { CaptureImage.FILTER_CROP }, getAutoCropPadding());
+
+        // resize
+        // current size
+       //int imageHeight = (Integer)properties.get(CaptureImage.);
         Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - " + imageWidth + "x" + imageHeight);
         // new size
         int targetWidth = 1024;
@@ -217,7 +237,7 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
                 imageWidthNew = imageWidth / imageHeight * targetHeight;
             }
         }
-        HashMap<String, Object> parameters = new HashMap<String, Object>();
+        //HashMap<String, Object> parameters = new HashMap<String, Object>();
         parameters.put(CaptureImage.FILTER_PARAM_RESIZE_WIDTH, (int)(imageWidthNew));
         parameters.put(CaptureImage.FILTER_PARAM_RESIZE_HEIGHT, (int) (imageHeightNew));
         Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - " + imageWidthNew + "x" + imageHeightNew);
