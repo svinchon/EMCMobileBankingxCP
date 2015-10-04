@@ -7,3 +7,4 @@
 *.apk
 /app/build
 /app/app.iml
+/gradle
