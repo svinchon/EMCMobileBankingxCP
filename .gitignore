@@ -6,4 +6,4 @@
 *.bin
 *.apk
 /app/build
-/app/app.xml
+/app/app.iml
