@@ -22,9 +22,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by tejas on 29/04/15.
- */
 public class ChequeHandler implements MediaSelectedHandler {
     private static ChequeHandler myInstance;
     private String FLOW_NAME;

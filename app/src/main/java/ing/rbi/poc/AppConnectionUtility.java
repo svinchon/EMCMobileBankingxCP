@@ -13,7 +13,8 @@ import android.preference.PreferenceManager;
  * Created by tejas on 27/04/15.
  */
 public class AppConnectionUtility {
-    public static void loginToStartScreen(Activity activity, String user, String password){
+
+    public static void loginToStartScreen(Activity activity, String user, String password) {
         SharedPreferences gprefs = PreferenceManager.getDefaultSharedPreferences(activity);
         String PrefURI = gprefs.getString("URI Address", "");
         String ResURI;
@@ -27,8 +28,6 @@ public class AppConnectionUtility {
         //Now make the Connection
         //Create a connection object
         Context context;
-
-
         ResolveConnection connection = new ResolveConnection(activity);
         connection.uri = PrefURI;
         connection.user = user;
@@ -38,16 +37,16 @@ public class AppConnectionUtility {
         editor.putString( "Password", password);
         editor.commit();
 
-        if (PrefURI != "" & ResURI !="") {
+        if (!PrefURI.equals("") & !ResURI.equals("")) {
             connection.execute();
             //Wait for the task to complete
-            while (!connection.Completed == true){
+            while (!connection.Completed){
                 try{Thread.sleep(100);}
                 catch (InterruptedException e) { e.printStackTrace(); }
             }
 
             //If the connection is OK then go to the Batch Create screen
-            if (connection.ConnectOK == true) {
+            if (connection.ConnectOK) {
                 //show the batch create screen
                 //Intent intent = new Intent(this,CreateBatch.class);
                 Intent intent = new Intent(activity,CreateBatchTabbed.class);

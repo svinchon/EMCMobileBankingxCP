@@ -1,8 +1,0 @@
-<shape 
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:shape="rectangle">
-	<solid android:color="#000000" />	 
-	<corners android:radius="3dp" />
-	<stroke android:width="3dp" android:color="#FFFFFF" />
-</shape>
-<!-- From: file:/Users/guinnj/Downloads/CaptivaMobileSDK2.0.0%202/Android/EMCMobileBankingxCP/app/src/main/res/drawable/black_button.xml -->

@@ -1,8 +1,0 @@
-<shape 
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:shape="rectangle">
-	<solid android:color="#000000" />	 
-	<corners android:radius="3dp" />
-	<stroke android:width="3dp" android:color="#FFFFFF" />
-</shape>
-<!-- From: file:/Users/guinnj/Syncplicity/ING%20RBI%20Mobile%20Capture/Mobile%20App/Source/v002/ING_RBI_POC/EMCMobileBankingxCP/app/src/main/res/drawable/black_button.xml -->

@@ -30,15 +30,13 @@ import emc.captiva.mobile.sdk.CaptureException;
 import emc.captiva.mobile.sdk.CaptureImage;
 import emc.captiva.mobile.sdk.QuadrilateralCropCallback;
 
-/**
- * This activity provides the ability to enhance the image.
- */
 public class EnhanceImageActivity extends Activity implements QuadrilateralCropCallback {
 	private static String TAG = EnhanceImageActivity.class.getSimpleName();
 	private static boolean _imgEdited = false;
 	private PZImageView _imageView = null;
 	private boolean _displayed = false;
 	private String _filename = null;
+	private String _myFlowType = null;
 	private ImageButton _backButton = null;
 	private Button _undoButton = null;
 	private ProgressBar _progressBar = null;	
@@ -176,15 +174,40 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
         // prefs
         SharedPreferences gprefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-        // auto crop
-        CaptureImage.applyFilters(new String[] { CaptureImage.FILTER_CROP }, getAutoCropPadding());
-
-        // resize
-        // current size
         Map<String, Object> properties = CaptureImage.getImageProperties();
         int imageWidth = (Integer)properties.get(CaptureImage.IMAGE_PROPERTY_WIDTH);
         int imageHeight = (Integer)properties.get(CaptureImage.IMAGE_PROPERTY_HEIGHT);
-        //int imageHeight = (Integer)properties.get(CaptureImage.);
+
+        HashMap<String, Object> parameters = new HashMap<String, Object>();
+
+        int _boxWidthPercent = 90;
+        int _boxWidth = imageWidth *_boxWidthPercent/100;
+        float _boxWidthHeightRatio = 2;
+		if (_myFlowType.equals("SPAIN_ID")) {
+			_boxWidthHeightRatio = 1.3f;
+		} else if (_myFlowType.equals("PROOF_ID")) {
+			_boxWidthHeightRatio = 1f;
+		}
+		int _boxHeight = (int)(_boxWidth / _boxWidthHeightRatio);
+		int _left = (int)((imageWidth-_boxWidth)/2);
+        int _top=(int)((imageHeight-_boxHeight)/2);
+        int _right=(int)((imageWidth-_boxWidth)/2+_boxWidth);
+        int _bottom=(int)((imageHeight-_boxHeight)/2+_boxHeight);
+        Rect rect = new Rect(
+                (int)(_left),
+                (int)(_top),
+                (int)(_right),
+                (int)(_bottom)
+        );
+        parameters.put(CaptureImage.FILTER_PARAM_CROP_RECTANGLE, rect);
+        CaptureImage.applyFilters(new String[] { CaptureImage.FILTER_CROP }, parameters);
+
+        // auto crop
+        //CaptureImage.applyFilters(new String[] { CaptureImage.FILTER_CROP }, getAutoCropPadding());
+
+        // resize
+        // current size
+       //int imageHeight = (Integer)properties.get(CaptureImage.);
         Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - " + imageWidth + "x" + imageHeight);
         // new size
         int targetWidth = 1024;
@@ -217,7 +240,7 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
                 imageWidthNew = imageWidth / imageHeight * targetHeight;
             }
         }
-        HashMap<String, Object> parameters = new HashMap<String, Object>();
+        //HashMap<String, Object> parameters = new HashMap<String, Object>();
         parameters.put(CaptureImage.FILTER_PARAM_RESIZE_WIDTH, (int)(imageWidthNew));
         parameters.put(CaptureImage.FILTER_PARAM_RESIZE_HEIGHT, (int) (imageHeightNew));
         Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - " + imageWidthNew + "x" + imageHeightNew);
@@ -380,6 +403,7 @@ CoreHelper.displayError(this, e, listener);
 		Bundle b = getIntent().getExtras();
 		IDDoc = b.getBoolean("IDDoc");
 		_filename = b.getString("Filename");
+		_myFlowType = b.getString(Constants.FLOW_TYPE_KEY);
 		
 		// Populate members.
 		_imageView = (PZImageView) findViewById(ing.rbi.poc.R.id.ImageView);

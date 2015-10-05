@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:state_pressed="true"
-        android:drawable="@drawable/check" />
-    <item
-        android:state_pressed="false"
-        android:drawable="@drawable/check" />
-    </selector><!-- From: file:/Users/guinnj/Syncplicity/ING%20RBI%20Mobile%20Capture/Mobile%20App/Source/v002/ING_RBI_POC/EMCMobileBankingxCP/app/src/main/res/drawable/check_button.xml -->
