@@ -64,14 +64,13 @@ public class MediaButtonClickHandler implements View.OnClickListener, PictureCal
     }
 
     private void handleCamera(View view) {
-        // Launch the camera to take a picture.
         HashMap<String, Object> parameters = CoreHelper.getTakePictureParametersFromPrefs(contextWeakReference.get());
-        // TODO SEB add positioning window and add flags for torch
+        // TODO SEB add positioning window
         CaptureWindow wnd;
         //wnd = new SVPositioningView(view.getContext());
         //parameters.put(CaptureImage.PICTURE_CAPTUREWINDOW, wnd);
         HashMap<String, Object> appParams = new HashMap<>();
-        // TODO SEB this custom window has en ellipse and a box that goes for id card
+        // TODO SEB define custom window depending on flow type
         if (myFlowType.equals("SPAIN_ID")) {
             SVCustomWindow_ID svcw1;
             svcw1 = new SVCustomWindow_ID(this.contextWeakReference.get(), "none", appParams);
@@ -81,8 +80,10 @@ public class MediaButtonClickHandler implements View.OnClickListener, PictureCal
             svcw1 = new SVCustomWindow_PASSPORT(this.contextWeakReference.get(), "none", appParams);
             parameters.put(CaptureImage.PICTURE_CAPTUREWINDOW, svcw1);
         }
+        // TODO SEB add flags for torch
         parameters.put(CaptureImage.PICTURE_BUTTON_TORCH, true);
         parameters.put(CaptureImage.PICTURE_TORCH, false);
+        // Launch the camera to take a picture.
         CaptureImage.takePicture(this, parameters);
     }
 
@@ -106,7 +107,6 @@ public class MediaButtonClickHandler implements View.OnClickListener, PictureCal
             // Use our utility function to save this JPG encoded byte array to storage.
             ByteArrayInputStream inputStream = new ByteArrayInputStream(imageData);
             CoreHelper.saveFile(inputStream, fullpath);
-
             // Get a URI to broadcast and let Android know there is a new image in the gallery.
             Uri uri = Uri.fromFile(fullpath);
             //This is a security issue in KitKat
@@ -145,7 +145,6 @@ public class MediaButtonClickHandler implements View.OnClickListener, PictureCal
             fragment.startActivityForResult(intent, Constants.EVENT_ENH_OPER);
             //Clear the Intent
             intent.setAction("");
-
         }
     }
 
