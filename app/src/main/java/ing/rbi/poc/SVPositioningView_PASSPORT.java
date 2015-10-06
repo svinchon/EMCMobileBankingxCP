@@ -5,9 +5,11 @@ package ing.rbi.poc; /** -------------------------------------------------------
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
@@ -16,8 +18,10 @@ import android.view.WindowManager;
 public class SVPositioningView_PASSPORT extends View {
 
     private final float         RADIUS = 35.0f;
-	private final int           COLOR = 0x7FFF0000;
+	private final int           COLOR = Color.WHITE; //x7FFF0000;
+
 	private Point[]             _bounds;                // topLeft, bottomRight
+    private Paint               _textPaint;
     private Point               _circleCenter;
 	private Paint               _boundsPaint;
 
@@ -27,9 +31,14 @@ public class SVPositioningView_PASSPORT extends View {
         Display display = windowManager.getDefaultDisplay();
         DisplayMetrics displayMetrics = new DisplayMetrics();
         _boundsPaint = new Paint();
+        _textPaint= new Paint();
         _boundsPaint.setColor(COLOR);
         _boundsPaint.setStyle(Paint.Style.STROKE);
-        _boundsPaint.setStrokeWidth(10f);
+        _textPaint.setColor(COLOR);
+        _textPaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+        _textPaint.setTextAlign(Paint.Align.CENTER);
+
+        _boundsPaint.setStrokeWidth(12f);
     }
 
 	protected void onDraw(Canvas canvas) {
@@ -59,19 +68,21 @@ public class SVPositioningView_PASSPORT extends View {
                 _boundsPaint
         );
         //Paint _boundsPaint.setColor(Color.BLACK);
-        _boundsPaint.setTextSize(40);
+        _textPaint.setTextSize(40);
+
         canvas.drawText(
-                "TOP",
-                (int) (_left),
+                "Align to the box",
+                (int) (canvas.getWidth()/2),
                 (int) (_top - 20),
-                _boundsPaint
+                _textPaint
         );
-        canvas.drawText(
+        /*canvas.drawText(
                 "BOTTOM",
                 (int) (_left),
                 (int) (_bottom + 45),
                 _boundsPaint
         );
+        */
 
         int ovalHeight = (int)(_boxHeight * 60 / 100);
         int ovalWidth = (int) (ovalHeight * 60 / 100);
