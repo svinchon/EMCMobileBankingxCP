@@ -48,7 +48,7 @@ public class SVPositioningView_ID extends View {
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 		_bounds = new Point[2];
-        int _boxWidthPercent = 90;
+        int _boxWidthPercent = 95;
         int cw = canvas.getWidth();
         int ch = canvas.getHeight();
         int _boxWidth = canvas.getWidth()*_boxWidthPercent/100;
@@ -62,7 +62,6 @@ public class SVPositioningView_ID extends View {
         _bounds[1] = new Point( _right,  _bottom);
         canvas.drawRect(_bounds[0].x,_bounds[0].y, _bounds[1].x, _bounds[1].y, _boundsPaint);
         _textPaint.setTextSize(40);
-        canvas.drawText("TOP",(int) (cw/2), (int) (_top - 20), _textPaint);
-        canvas.drawText("BOTTOM",(int) (cw/2),(int) (_bottom + 45), _textPaint);
-    }
+        canvas.drawText("Align in box",(int) (cw/2), (int) (_top - 20), _textPaint);
+        canvas.drawText("ID",(int) (cw/2),(int) (_bottom + 45), _textPaint);    }
 }
