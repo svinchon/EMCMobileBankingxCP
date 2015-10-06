@@ -24,16 +24,14 @@ public class AddBackOfCheque extends Activity {
 	public void onAddBack (View view) {
 		completeAndReturn(1);
 	}
-public void onNoAddBack (View view) {
-	completeAndReturn(0);
-	
-	
-	}
-private void completeAndReturn(int resultCode) {
-    // Pass back our result and finish.
-    setResult(resultCode); 
-    finish();
-}
 
+	public void onNoAddBack (View view) {
+		completeAndReturn(0);
+	}
+	private void completeAndReturn(int resultCode) {
+		// Pass back our result and finish.
+		setResult(resultCode);
+		finish();
+	}
 
 }

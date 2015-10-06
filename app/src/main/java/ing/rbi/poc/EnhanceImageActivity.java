@@ -170,16 +170,15 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
     // TODO SEB enhance function
     private void enhanceForMe() {
         startEdit();
-
         // prefs
         SharedPreferences gprefs = PreferenceManager.getDefaultSharedPreferences(this);
-
+		// retrieve info
         Map<String, Object> properties = CaptureImage.getImageProperties();
         int imageWidth = (Integer)properties.get(CaptureImage.IMAGE_PROPERTY_WIDTH);
         int imageHeight = (Integer)properties.get(CaptureImage.IMAGE_PROPERTY_HEIGHT);
-
+		// created empty parameters array
         HashMap<String, Object> parameters = new HashMap<String, Object>();
-
+		// crop depending of flow type
         int _boxWidthPercent = 90;
         int _boxWidth = imageWidth *_boxWidthPercent/100;
         float _boxWidthHeightRatio = 2;
@@ -199,21 +198,19 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
                 (int)(_right),
                 (int)(_bottom)
         );
-        parameters.put(CaptureImage.FILTER_PARAM_CROP_RECTANGLE, rect);
-        CaptureImage.applyFilters(new String[] { CaptureImage.FILTER_CROP }, parameters);
-
-        // auto crop
-        //CaptureImage.applyFilters(new String[] { CaptureImage.FILTER_CROP }, getAutoCropPadding());
-
-        // resize
-        // current size
-       //int imageHeight = (Integer)properties.get(CaptureImage.);
-        Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - " + imageWidth + "x" + imageHeight);
-        // new size
-        int targetWidth = 1024;
-        int targetHeight = 768;
-        boolean isPortrait;
-        float format = (float)imageWidth/imageHeight;
+		parameters.put(CaptureImage.FILTER_PARAM_CROP_RECTANGLE, rect);
+		CaptureImage.applyFilters(new String[]{CaptureImage.FILTER_CROP}, parameters);
+		// auto crop (create issues in combination with above)
+		//CaptureImage.applyFilters(new String[] { CaptureImage.FILTER_CROP }, getAutoCropPadding());
+		// resize
+		// current size
+		//int imageHeight = (Integer)properties.get(CaptureImage.);
+		Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - " + imageWidth + "x" + imageHeight);
+		// new size
+		int targetWidth = 1024;
+		int targetHeight = 768;
+		boolean isPortrait;
+		float format = (float)imageWidth/imageHeight;
         float target_max_format = (float)targetWidth/targetHeight;
         int imageWidthNew = targetWidth;
         int imageHeightNew = targetHeight;
@@ -246,11 +243,9 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
         Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - " + imageWidthNew + "x" + imageHeightNew);
         // apply
         CaptureImage.applyFilters(new String[]{CaptureImage.FILTER_RESIZE}, parameters);
-
         // deskew
         //applySlowFilter(CaptureImage.FILTER_PERSPECTIVE);
-
-        // B & W
+        // b&w
         //applySlowFilter(CaptureImage.FILTER_ADAPTIVE_BINARY);
     }
 
@@ -287,9 +282,6 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 		processEnhanceAndBack();
 	}
 
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onBackPressed()
-	 */
 	private void galleryAddPic(String mCurrentPhotoPath) {
 	    Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
 	    File f = new File(mCurrentPhotoPath);
@@ -308,22 +300,20 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 
         // If the image has been edited, then save a copy of the image under a new filename to the gallery.
         try {
-            //Show the progress bar
-            String fullpath = saveCurrentImage();
-
-// Let Android know so that it shows immediately in the image gallery. Note that TIFF
-// images cannot be viewed by the Android gallery viewer as of 4.2.2. However, if you
-// save a TIFF image to the gallery storage folder, it will still save and you can
-// verify that it is there by using the Android "My Files" application if available
-// on your device, or the Android Debug Bridge (adb). You can get the path to the file
-// by debugging this application's save function.
-if (fullpath != null) {
-               galleryAddPic(fullpath);
-//sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.fromFile(new File(fullpath))));
-}
-
-// Finish this activity and return the result.
-           completeAndReturn(RESULT_OK, SavedFileName);
+			//Show the progress bar
+			String fullpath = saveCurrentImage();
+			// Let Android know so that it shows immediately in the image gallery. Note that TIFF
+			// images cannot be viewed by the Android gallery viewer as of 4.2.2. However, if you
+			// save a TIFF image to the gallery storage folder, it will still save and you can
+			// verify that it is there by using the Android "My Files" application if available
+			// on your device, or the Android Debug Bridge (adb). You can get the path to the file
+			// by debugging this application's save function.
+			if (fullpath != null) {
+				galleryAddPic(fullpath);
+				//sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.fromFile(new File(fullpath))));
+			}
+			// Finish this activity and return the result.
+			completeAndReturn(RESULT_OK, SavedFileName);
        }
        catch (CaptureException e) {
            // If an exception happens we finish this activity and send back the cancel result when the error dialog is dimissed.
@@ -334,10 +324,9 @@ if (fullpath != null) {
                    completeAndReturn(RESULT_CANCELED, null);
                }
            };
-
-CoreHelper.displayError(this, e, listener);
-}
-    }
+		   CoreHelper.displayError(this, e, listener);
+	   }
+	}
 
     /*
      * (non-Javadoc)
@@ -352,7 +341,6 @@ CoreHelper.displayError(this, e, listener);
 		else{
 			getMenuInflater().inflate(ing.rbi.poc.R.menu.activity_enhance_image_id, menu);
 		}
-		
 		_menu = menu;
 		return true;
 	}
@@ -362,66 +350,56 @@ CoreHelper.displayError(this, e, listener);
 	 */
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
-	
 		super.onWindowFocusChanged(hasFocus);
-		
 		// If we don't have the focus, then no need to do anything.
 		if (!hasFocus) {
-		    return;
+			return;
 		}
-		
 		// Handle refreshing of the image here.
 		if (!_displayed && _filename != null) {
-		    // We haven't loaded the image yet so do that now.
+			// We haven't loaded the image yet so do that now.
 			loadImage();
 			_displayed = true;
-		} 
-		else {
-		    // Refresh our image as we have a UI state change.
-		    _imageView.setImageBitmap(getImage());
+		} else {
+			// Refresh our image as we have a UI state change.
+			_imageView.setImageBitmap(getImage());
 		}
-
 		// Update our UI to reflect edit changes.
 		if (_imgEdited) {
-		    startEdit();
-		} 
-		else {
+			startEdit();
+		} else {
 			cancelEdit();
 		}
 	}
 
 	/*
-	 * (non-Javadoc)
+     * (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(ing.rbi.poc.R.layout.activity_enhance_image);
-
-		// Get filename to load.
-		Bundle b = getIntent().getExtras();
-		IDDoc = b.getBoolean("IDDoc");
-		_filename = b.getString("Filename");
-		_myFlowType = b.getString(Constants.FLOW_TYPE_KEY);
-		
-		// Populate members.
-		_imageView = (PZImageView) findViewById(ing.rbi.poc.R.id.ImageView);
-		_progressBar = (ProgressBar) findViewById(ing.rbi.poc.R.id.ProgressStatusBar);
-		_backButton = (ImageButton) findViewById(ing.rbi.poc.R.id.BackButton);
-		_undoButton = (Button) findViewById(ing.rbi.poc.R.id.UndoAllButton);
-		_enhanceLayout = (RelativeLayout) findViewById(ing.rbi.poc.R.id.EnhanceLayout);
-		
-		// Determine whether we are being launched for the first time or have been rotated
-		// and then set the appropriate edit mode from the start.
-		if ((AddCheque._newLoad == false)||(AddBill._newLoad ==false)||(AddPID._newLoad == false) && _imgEdited == true) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(ing.rbi.poc.R.layout.activity_enhance_image);
+        // Get filename to load.
+        Bundle b = getIntent().getExtras();
+        IDDoc = b.getBoolean("IDDoc");
+        _filename = b.getString("Filename");
+        _myFlowType = b.getString(Constants.FLOW_TYPE_KEY);
+        // Populate members.
+        _imageView = (PZImageView) findViewById(ing.rbi.poc.R.id.ImageView);
+        _progressBar = (ProgressBar) findViewById(ing.rbi.poc.R.id.ProgressStatusBar);
+        _backButton = (ImageButton) findViewById(ing.rbi.poc.R.id.BackButton);
+        _undoButton = (Button) findViewById(ing.rbi.poc.R.id.UndoAllButton);
+        _enhanceLayout = (RelativeLayout) findViewById(ing.rbi.poc.R.id.EnhanceLayout);
+        // Determine whether we are being launched for the first time or have been rotated
+        // and then set the appropriate edit mode from the start.
+        if ((AddCheque._newLoad == false) || (AddBill._newLoad == false) || (AddPID._newLoad == false) && _imgEdited == true) {
             startEdit();
-		} else {
+        } else {
             _imgEdited = false;
             setBackButton(false);
-		}		
-		
-	}
+        }
+    }
 	
 	/**
 	 * If crop applied then set edit mode = true;
@@ -450,7 +428,6 @@ CoreHelper.displayError(this, e, listener);
         Intent retData = new Intent();
         retData.putExtra("SavedFile", fileNameToSend);
         setResult(resultCode, retData);
-
         finish();
     }
 
@@ -458,7 +435,6 @@ CoreHelper.displayError(this, e, listener);
         Intent orignalIntent = getIntent();
         String flowType = orignalIntent.getStringExtra(Constants.FLOW_TYPE_KEY);
         MediaSelectedHandler mediaSelectedHandler = null;
-
         if(flowType.equals(Constants.FLOW_PROOF_ID)){
             mediaSelectedHandler = ProofIDHandler.getProofIDHandler(null);
         }
@@ -506,12 +482,12 @@ CoreHelper.displayError(this, e, listener);
 	 * @param edit    The edit mode to use to setup the UI.
 	 */
 	private void setBackButton(Boolean edit) {
-//	    if (edit) {
-//			_backButton.setImageResource(R.drawable.prevsave_button);
-//		}
-//		else {
-//			_backButton.setImageResource(R.drawable.prev_button);
-//		}
+        //	    if (edit) {
+        //			_backButton.setImageResource(R.drawable.prevsave_button);
+        //		}
+        //		else {
+        //			_backButton.setImageResource(R.drawable.prev_button);
+        //		}
         _backButton.setImageResource(ing.rbi.poc.R.drawable.i_ok);
 	}
 
@@ -519,7 +495,6 @@ CoreHelper.displayError(this, e, listener);
 	 * Load the image for the filename passed into this activity.
 	 */
 	private void loadImage() {
-	    
 	    // If the file exists then load the image into the SDK and display it.
 		File file = new File(_filename);
 		if (file.exists()) {
@@ -541,7 +516,6 @@ CoreHelper.displayError(this, e, listener);
                 // TODO SEB call enhance method automatically
                 // added for enhance to be called by default
                 enhanceForMe();
-
 				_imageView.setImageBitmap(getImage());
             }
             catch (Exception e) {
@@ -559,22 +533,19 @@ CoreHelper.displayError(this, e, listener);
 	 * images could use up a lot of the memory on the device.
 	 * @return    The bitmap to use for the display.
 	 */
-	private Bitmap getImage() {
-	    
-	    // Set the new rectangle to represent the new image's size.
+    private Bitmap getImage() {
+        // Set the new rectangle to represent the new image's size.
         Rect rect = CoreHelper.calcImageSizePx(_imageView, 0);
-	    
-	    // Tell the SDK to scale the image to the new size.
-		Bitmap bitmap = null;
-		if (rect.width() > 0 && rect.height() > 0){
-			bitmap = CaptureImage.getImageForDisplay(rect.width(), rect.height(), null);
-		}
-		
-		// Return the newly scaled image.
-		return bitmap;
-	}	
-	
-	/**
+        // Tell the SDK to scale the image to the new size.
+        Bitmap bitmap = null;
+        if (rect.width() > 0 && rect.height() > 0) {
+            bitmap = CaptureImage.getImageForDisplay(rect.width(), rect.height(), null);
+        }
+        // Return the newly scaled image.
+        return bitmap;
+    }
+
+    /**
 	 * This function starts and asynchronous task to perform the operation.
 	 * It will start a progress bar to display to the user while it is executing and
 	 * then cancel the progress bar when finished. 
@@ -582,7 +553,6 @@ CoreHelper.displayError(this, e, listener);
 	 */
 	private void applySlowFilter(String operation) {	
 		final String op = operation;
-		
 		AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void> () {
 
 			@Override
@@ -611,16 +581,15 @@ CoreHelper.displayError(this, e, listener);
 		        _backButton.setEnabled(true);	
 		        _imageView._preventGesture = false;
 				startEdit();
-			}			
+			}
+
 		};
-	
 		// Disable controls while filter is applied.
 		_imageView._preventGesture = true;
 		if (_menu != null) {
 		    // This will cause slight flicker on some devices.
 		    _menu.setGroupVisible(ing.rbi.poc.R.id.ABMainGroup, false);
 		}
-		
 		_enhanceLayout.setEnabled(false);
 		_undoButton.setEnabled(false);
 		_backButton.setEnabled(false);		
