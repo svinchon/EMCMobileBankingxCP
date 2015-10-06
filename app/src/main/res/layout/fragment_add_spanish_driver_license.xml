@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/add_proof_id"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_marginTop="10dp"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/pid_camera_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_weight="1"
+        android:background="@color/ing_button"
+        android:drawableLeft="@drawable/i_camera"
+        android:drawablePadding="0dp"
+        android:drawableStart="@drawable/i_camera"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="Camera"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:foundryTypeface="Quicksand-Regular" />
+    />
+
+    <Button
+        android:id="@+id/pid_gallery_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_weight="1"
+        android:background="@color/ing_button"
+        android:drawableLeft="@drawable/i_gallery"
+        android:drawablePadding="0dp"
+        android:drawableStart="@drawable/i_gallery"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="Gallery"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:foundryTypeface="Quicksand-Regular" />
+
+</LinearLayout>
