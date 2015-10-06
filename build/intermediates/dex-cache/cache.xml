@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\vinchs\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="D:\xTools\AndroidStudio\Workspace\EMCMobileBankingxCP\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-5d88c414bdcb574d55fcc2c5d3084a61b93f956f.jar" />
+    </item>
+    <item
+        jar="C:\Users\vinchs\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="D:\xTools\AndroidStudio\Workspace\EMCMobileBankingxCP\app\build\intermediates\pre-dexed\debug\gson-2.2.4-215fd4ac98002ba17b2c6f9ac1cf5244cd37947a.jar" />
+    </item>
+    <item
+        jar="D:\xTools\AndroidStudio\Workspace\EMCMobileBankingxCP\app\build\intermediates\exploded-aar\captivamobilesdk\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="05a74a7c0a2a776d585be7e90cb241d900162e63">
+        <dex dex="D:\xTools\AndroidStudio\Workspace\EMCMobileBankingxCP\app\build\intermediates\pre-dexed\debug\classes-1a249753132a3a9bdcd0db28f72b8c195cc53f8d.jar" />
+    </item>
+    <item
+        jar="D:\xTools\AndroidStudio\Workspace\EMCMobileBankingxCP\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="D:\xTools\AndroidStudio\Workspace\EMCMobileBankingxCP\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-8cabf315544e4f8c74833fac2ff9568ae4ea6acd.jar" />
+    </item>
+    <item
+        jar="D:\xTools\AndroidStudio\Workspace\EMCMobileBankingxCP\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="D:\xTools\AndroidStudio\Workspace\EMCMobileBankingxCP\app\build\intermediates\pre-dexed\debug\classes-08d97dea322caa424be1a5b7f4be7d26f4bcd23e.jar" />
+    </item>
+    <item
+        jar="D:\xTools\AndroidStudio\Workspace\EMCMobileBankingxCP\app\build\intermediates\exploded-aar\uk.co.josephearl.foundry\foundry\1.0.4\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="498f132e20e58e6bfb80667172fbaf45692504cf">
+        <dex dex="D:\xTools\AndroidStudio\Workspace\EMCMobileBankingxCP\app\build\intermediates\pre-dexed\debug\classes-0b360bcee3b4be0584564eda2aa94c5e5c13831b.jar" />
+    </item>
+
+</items>
