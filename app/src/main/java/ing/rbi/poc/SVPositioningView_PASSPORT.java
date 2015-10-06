@@ -18,12 +18,12 @@ import android.view.WindowManager;
 public class SVPositioningView_PASSPORT extends View {
 
     private final float         RADIUS = 35.0f;
-	private final int           COLOR = Color.WHITE; //x7FFF0000;
+	private final int           COLOR = Color.WHITE; //0x7FFF0000;
 
-	private Point[]             _bounds;                // topLeft, bottomRight
-    private Paint               _textPaint;
+    private Point[]             _bounds;                // topLeft, bottomRight
     private Point               _circleCenter;
 	private Paint               _boundsPaint;
+    private Paint               _textPaint;
 
 	public SVPositioningView_PASSPORT(Context context) {
         super(context);
@@ -31,71 +31,45 @@ public class SVPositioningView_PASSPORT extends View {
         Display display = windowManager.getDefaultDisplay();
         DisplayMetrics displayMetrics = new DisplayMetrics();
         _boundsPaint = new Paint();
-        _textPaint= new Paint();
         _boundsPaint.setColor(COLOR);
         _boundsPaint.setStyle(Paint.Style.STROKE);
+        _boundsPaint.setStrokeWidth(10f);
+        _textPaint = new Paint();
         _textPaint.setColor(COLOR);
-        _textPaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
         _textPaint.setTextAlign(Paint.Align.CENTER);
-
-        _boundsPaint.setStrokeWidth(12f);
+        _textPaint.setTypeface(
+                Typeface.create(
+                        Typeface.DEFAULT,
+                        Typeface.BOLD
+                )
+        );
+        _textPaint.setTextSize(40);
+        _textPaint.setStrokeWidth(10f);
     }
 
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
         _bounds = new Point[2];
         int _boxWidthPercent = 90;
-        int _boxWidth = canvas.getWidth()*_boxWidthPercent/100;
+        int cw = canvas.getWidth();
+        int ch = canvas.getHeight();
+        int _boxWidth = cw*_boxWidthPercent/100;
         float _boxWidthHeightRatio = 1.3f;
         int _boxHeight = (int)(_boxWidth / _boxWidthHeightRatio);
-        int _left = (int)((canvas.getWidth()-_boxWidth)/2);
-        int _top=(int)((canvas.getHeight()-_boxHeight)/2);
-        int _right=(int)((canvas.getWidth()-_boxWidth)/2+_boxWidth);
-        int _bottom=(int)((canvas.getHeight()-_boxHeight)/2+_boxHeight);
-        _bounds[0] = new Point(
-                _left,
-                _top
-        );
-        _bounds[1] = new Point(
-                _right,
-                _bottom
-        );
-        canvas.drawRect(
-                _bounds[0].x,
-                _bounds[0].y,
-                _bounds[1].x,
-                _bounds[1].y,
-                _boundsPaint
-        );
-        //Paint _boundsPaint.setColor(Color.BLACK);
+        int _left = (int)((cw-_boxWidth)/2);
+        int _top=(int)((ch-_boxHeight)/2);
+        int _right=(int)((cw-_boxWidth)/2+_boxWidth);
+        int _bottom=(int)((ch-_boxHeight)/2+_boxHeight);
+        _bounds[0] = new Point(_left, _top);
+        _bounds[1] = new Point( _right,  _bottom);
+        canvas.drawRect(_bounds[0].x,_bounds[0].y, _bounds[1].x, _bounds[1].y, _boundsPaint);
         _textPaint.setTextSize(40);
-
-        canvas.drawText(
-                "Align to the box",
-                (int) (canvas.getWidth()/2),
-                (int) (_top - 20),
-                _textPaint
-        );
-        /*canvas.drawText(
-                "BOTTOM",
-                (int) (_left),
-                (int) (_bottom + 45),
-                _boundsPaint
-        );
-        */
-
+        canvas.drawText("Align in box",(int) (cw/2), (int) (_top - 20), _textPaint);
+        //canvas.drawText("BOTTOM",(int) (cw/2),(int) (_bottom + 45), _textPaint);
         int ovalHeight = (int)(_boxHeight * 60 / 100);
         int ovalWidth = (int) (ovalHeight * 60 / 100);
-        _circleCenter = new Point(
-                _left + 100 + ovalWidth/2,
-                _top + _boxHeight / 2
-        );
-        RectF r = new RectF(
-                _circleCenter.x-ovalWidth/2,
-                _circleCenter.y-ovalHeight/2,
-                _circleCenter.x+ovalWidth/2,
-                _circleCenter.y+ovalHeight/2
-        );
+        _circleCenter = new Point(_left + 100 + ovalWidth/2, _top + _boxHeight / 2);
+        RectF r = new RectF( _circleCenter.x-ovalWidth/2, _circleCenter.y-ovalHeight/2, _circleCenter.x+ovalWidth/2, _circleCenter.y+ovalHeight/2);
         canvas.drawOval(r, _boundsPaint);
     }
 }
