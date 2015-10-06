@@ -227,8 +227,8 @@ public class ProofIDHandler implements MediaSelectedHandler{
         String forename = PIDResults.Forename;
         String surname = PIDResults.Surname;
 
-        EditText addressText = (EditText) proof_details_view.findViewById(ing.rbi.poc.R.id.txt_address);
-        addressText.setText(address);
+        //EditText addressText = (EditText) proof_details_view.findViewById(ing.rbi.poc.R.id.txt_address);
+        //addressText.setText(address);
 
         EditText dOBText = (EditText) proof_details_view.findViewById(ing.rbi.poc.R.id.txt_Invoice_Amount);
         dOBText.setText(dOB);
