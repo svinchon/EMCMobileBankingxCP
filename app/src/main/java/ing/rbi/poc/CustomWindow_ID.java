@@ -25,9 +25,9 @@ import emc.captiva.mobile.sdk.ContinuousCaptureCallback;
 /**
  * A custom capture window.
  */
-public class SVCustomWindow_PASSPORT extends CaptureWindow {
+public class CustomWindow_ID extends CaptureWindow {
 
-    private final static String TAG = SVCustomWindow_PASSPORT.class.getSimpleName();
+    private final static String TAG = CustomWindow_ID.class.getSimpleName();
     private enum OverlayMode
     {
         Replace,
@@ -36,8 +36,8 @@ public class SVCustomWindow_PASSPORT extends CaptureWindow {
     }
     private OverlayMode _overlayMode = OverlayMode.None;
     private TextView _customLabel = null;
-    private SVCustomView_PASSPORT _view = null;
-    private SVQuadView _quadView = null;
+    private CustomView_ID _view = null;
+    private QuadView _quadView = null;
     private View _flashView = null;
     private boolean _useMotion = false;
 
@@ -46,7 +46,7 @@ public class SVCustomWindow_PASSPORT extends CaptureWindow {
      * @param context This is the context for the activity.
      * @param pref The value of the preference used for take picture.
      */
-    public SVCustomWindow_PASSPORT(Context context, String pref, Map<String, Object> appParams) {
+    public CustomWindow_ID(Context context, String pref, Map<String, Object> appParams) {
         // We could have retrieved the preferences here, but since we just did that,
         // we will just pass it in. So here, we determine from our preference whether
         // we are extending the existing SDK overlay or whether we are creating a brand new overlay.
@@ -101,9 +101,9 @@ public class SVCustomWindow_PASSPORT extends CaptureWindow {
         // a capture button at the bottom.
         if (_overlayMode == OverlayMode.Replace) {
             // Add new custom view to replace the SDK overlay.
-            _view = new SVCustomView_PASSPORT(this);
+            _view = new CustomView_ID(this);
             setView(_view, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-            _quadView = new SVQuadView(this.getActivity());
+            _quadView = new QuadView(this.getActivity());
             RelativeLayout.LayoutParams qparams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
             _quadView.setLayoutParams(qparams);
             _view.addView(_quadView);
@@ -129,15 +129,16 @@ public class SVCustomWindow_PASSPORT extends CaptureWindow {
                 view.addView(_customLabel);
             }
 
-            _quadView = new SVQuadView(this.getActivity());
+            _quadView = new QuadView(this.getActivity());
             RelativeLayout.LayoutParams qparams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
             _quadView.setLayoutParams(qparams);
             view.addView(_quadView);
+
             view.addView(_flashView);
         }
         // TODO SEB add positioning window to custom window
         RelativeLayout view = (RelativeLayout) getView();
-        view.addView(new SVPositioningView_PASSPORT(this.getActivity()));
+        view.addView(new PositioningView_ID(this.getActivity()));
         /*TextView myView = new TextView(this.getActivity());
         myView.setText("hello");
         view.addView(myView);*/

@@ -187,7 +187,7 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
                 // this should match the ratio used in SVPositioningView_ID.java
 				_boxWidthHeightRatio = 1.5f;
 			} else if (_myFlowType.equals("PROOF_ID")) {
-                // this should match the ratio used in SVPositioningView_PASSPORT.java
+                // this should match the ratio used in PositioningView_PASSPORT.java
                 _boxWidthHeightRatio = 1.25f;
 			}
 			int _boxHeight = (int)(_boxWidth / _boxWidthHeightRatio);

@@ -1,7 +1,3 @@
-/** -------------------------------------------------------------------------
- * Copyright 2013-2015 EMC Corporation.  All rights reserved.
- ---------------------------------------------------------------------------- */
-
 package ing.rbi.poc;
 
 import android.content.Context;
@@ -12,17 +8,14 @@ import android.graphics.Path;
 import android.graphics.PointF;
 import android.view.View;
 
-/**
- * This class draws a quad overlay
- */
-public class SVQuadView extends View {
+public class QuadView extends View {
 
     private Path _path = new Path();
     private Paint _paint = new Paint();
     private PointF[] _quadPoints;       // The view's quad points
     private boolean _valid;             // true for good quality
 
-    public SVQuadView(Context context) {
+    public QuadView(Context context) {
         super(context);
 
         _paint.setStyle(Paint.Style.STROKE);

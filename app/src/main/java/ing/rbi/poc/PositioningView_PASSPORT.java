@@ -1,6 +1,5 @@
-package ing.rbi.poc; /** -------------------------------------------------------------------------
- * Copyright 2013-2015 EMC Corporation.  All rights reserved.
- ---------------------------------------------------------------------------- */
+package ing.rbi.poc;
+
 // TODO SEB custom view to display ellipse and box
 
 import android.content.Context;
@@ -15,7 +14,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 
-public class SVPositioningView_PASSPORT extends View {
+public class PositioningView_PASSPORT extends View {
 
     private final float         RADIUS = 35.0f;
 	private final int           COLOR = Color.WHITE; //0x7FFF0000;
@@ -25,7 +24,7 @@ public class SVPositioningView_PASSPORT extends View {
 	private Paint               _boundsPaint;
     private Paint               _textPaint;
 
-	public SVPositioningView_PASSPORT(Context context) {
+	public PositioningView_PASSPORT(Context context) {
         super(context);
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = windowManager.getDefaultDisplay();
@@ -62,7 +61,7 @@ public class SVPositioningView_PASSPORT extends View {
         int _bottom=(int)((ch-_boxHeight)/2+_boxHeight);
         _bounds[0] = new Point(_left, _top);
         _bounds[1] = new Point( _right,  _bottom);
-        canvas.drawRect(_bounds[0].x,_bounds[0].y, _bounds[1].x, _bounds[1].y, _boundsPaint);
+        canvas.drawRect(_bounds[0].x, _bounds[0].y, _bounds[1].x, _bounds[1].y, _boundsPaint);
         _textPaint.setTextSize(40);
         canvas.drawText("Align in box",(int) (cw/2), (int) (_top - 20), _textPaint);
         //canvas.drawText("Passport",(int) (cw/2),(int) (_bottom + 45), _textPaint);

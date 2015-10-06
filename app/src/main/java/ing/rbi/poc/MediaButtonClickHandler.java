@@ -72,12 +72,12 @@ public class MediaButtonClickHandler implements View.OnClickListener, PictureCal
         HashMap<String, Object> appParams = new HashMap<>();
         // TODO SEB define custom window depending on flow type
         if (myFlowType.equals("SPAIN_ID")) {
-            SVCustomWindow_ID svcw1;
-            svcw1 = new SVCustomWindow_ID(this.contextWeakReference.get(), "none", appParams);
+            CustomWindow_ID svcw1;
+            svcw1 = new CustomWindow_ID(this.contextWeakReference.get(), "none", appParams);
             parameters.put(CaptureImage.PICTURE_CAPTUREWINDOW, svcw1);
         } else if (myFlowType.equals("PROOF_ID")) {
-            SVCustomWindow_PASSPORT svcw1;
-            svcw1 = new SVCustomWindow_PASSPORT(this.contextWeakReference.get(), "none", appParams);
+            CustomWindow_PASSPORT svcw1;
+            svcw1 = new CustomWindow_PASSPORT(this.contextWeakReference.get(), "none", appParams);
             parameters.put(CaptureImage.PICTURE_CAPTUREWINDOW, svcw1);
         }
         // TODO SEB add flags for torch
