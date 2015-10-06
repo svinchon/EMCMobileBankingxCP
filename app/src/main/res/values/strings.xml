@@ -148,6 +148,7 @@
     <string name="cheque_reference">Cheque Reference</string>
     <string-array name="country_array">
         <item></item>
+        <item>UK</item>
         <item>Netherlands</item>
         <item>Spain</item>
     </string-array>
