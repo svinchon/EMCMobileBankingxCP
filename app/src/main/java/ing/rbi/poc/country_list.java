@@ -143,7 +143,7 @@ public class country_list extends Fragment {
                 if(position > 0) {
                     SelectedDocType = displayDocType[position];
                     //Check to see if it's a passport
-                    if (SelectedDocType.equals("Passport")) {
+                    if (SelectedDocType.equals("Passport")  || SelectedDocType.equals("Driver License")) {
                         handleProofID("Passport");
                     }
                     //Spanish ID
