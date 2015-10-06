@@ -43,7 +43,7 @@ public class PIDResults extends Activity {
 		EditText DT = (EditText) findViewById(ing.rbi.poc.R.id.txt_doctype);
 		EditText ED = (EditText) findViewById(ing.rbi.poc.R.id.txt_expdate);
 		EditText DN = (EditText) findViewById(ing.rbi.poc.R.id.txt_docnumber);
-		EditText AD = (EditText) findViewById(ing.rbi.poc.R.id.txt_address);
+		//EditText AD = (EditText) findViewById(ing.rbi.poc.R.id.txt_address);
 		
 		SN.setText(Surname);
 		FN.setText(Forename);
@@ -51,7 +51,7 @@ public class PIDResults extends Activity {
 		DT.setText(DocumentType);
 		ED.setText(ExpirationDate);
 		DN.setText(DocumentNumber);
-		AD.setText(Address);
+		//AD.setText(Address);
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class PIDResults extends Activity {
 		EditText DT = (EditText) findViewById(ing.rbi.poc.R.id.txt_doctype);
 		EditText ED = (EditText) findViewById(ing.rbi.poc.R.id.txt_expdate);
 		EditText DN = (EditText) findViewById(ing.rbi.poc.R.id.txt_docnumber);
-		EditText AD = (EditText) findViewById(ing.rbi.poc.R.id.txt_address);
+		//EditText AD = (EditText) findViewById(ing.rbi.poc.R.id.txt_address);
 		String xCPURI = "";
 		xCPURI = gprefs.getString("xCP BPS URI Address", "");
 		xCPURI = xCPURI + "/bps/http/Update_PID?";
@@ -152,7 +152,8 @@ public class PIDResults extends Activity {
 		DocType = DocType.replace("?", "");
 		String DocNumber = "&document_number=" + DN.getText().toString().replace(" ","&20");
 		DocNumber = DocNumber.replace("?", "");
-		String Address = "&address=" + AD.getText().toString().replace(" ","%20");
+		//String Address = "&address=" + AD.getText().toString().replace(" ","%20");
+		String Address = "&address=";
 		Address = Address.replace("?", "");
 		Address = Address.replaceAll("[\n\r]", "%20");
 		//This resets all of the batch options and goes back to the upload batch create screen
