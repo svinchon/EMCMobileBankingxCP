@@ -63,5 +63,6 @@ public class SVPositioningView_ID extends View {
         canvas.drawRect(_bounds[0].x,_bounds[0].y, _bounds[1].x, _bounds[1].y, _boundsPaint);
         _textPaint.setTextSize(40);
         canvas.drawText("Align in box",(int) (cw/2), (int) (_top - 20), _textPaint);
-        canvas.drawText("ID",(int) (cw/2),(int) (_bottom + 45), _textPaint);    }
+        //canvas.drawText("ID",(int) (cw/2),(int) (_bottom + 45), _textPaint);
+    }
 }
