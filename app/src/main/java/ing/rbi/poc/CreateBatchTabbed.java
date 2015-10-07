@@ -36,8 +36,10 @@ public class CreateBatchTabbed extends Activity {
 
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        createTab = actionBar.newTab().setText("  Create New");
-        createTab.setIcon(ing.rbi.poc.R.drawable.i_create_new);
+//        createTab = actionBar.newTab().setText("  Create New");
+        createTab = actionBar.newTab().setText("Select Below");
+//        createTab.setIcon(ing.rbi.poc.R.drawable.i_create_new);
+        //createTab.
 
 
         viewDocsTab = actionBar.newTab().setText("  Documents");
@@ -64,7 +66,6 @@ public class CreateBatchTabbed extends Activity {
     private void setupCreateFragment(Bundle savedInstanceState) {
         createFragment = new country_list();
         createFragment.setArguments(savedInstanceState);
-
         createFragment.addToIntentData(Constants.URI, getIntent().getStringExtra(Constants.URI));
         createFragment.addToIntentData(Constants.TICKET, getIntent().getStringExtra(Constants.TICKET));
     }

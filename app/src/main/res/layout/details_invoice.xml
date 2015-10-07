@@ -48,10 +48,22 @@
         android:layout_alignLeft="@+id/txt_Invoice_Number"
         android:layout_below="@+id/txt_Invoice_Number"
         android:paddingTop="20dp"
-        android:text="Invoice Date"
+        android:text="Date"
         android:textColor="@color/ing_background"
         android:textSize="20sp"
         app:foundryTypeface="Quicksand-Regular" />
+
+    <!--TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txt_Invoice_Number"
+        android:layout_below="@+id/txt_Invoice_Number"
+        android:paddingTop="20dp"
+        android:text="Invoice Date"
+        android:textColor="@color/ing_background"
+        android:textSize="20sp"
+        app:foundryTypeface="Quicksand-Regular" /-->
 
     <TextView
         android:id="@+id/back_prompt"
@@ -72,10 +84,21 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_Invoice_Date"
         android:paddingTop="20dp"
-        android:text="Invoice Amount"
+        android:text="Amount"
         android:textColor="@color/ing_background"
         android:textSize="20sp"
         app:foundryTypeface="Quicksand-Regular" />
+
+    <!--TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_Invoice_Date"
+        android:paddingTop="20dp"
+        android:text="Invoice Amount"
+        android:textColor="@color/ing_background"
+        android:textSize="20sp"
+        app:foundryTypeface="Quicksand-Regular" /-->
 
     <LinearLayout
         android:layout_width="fill_parent"
