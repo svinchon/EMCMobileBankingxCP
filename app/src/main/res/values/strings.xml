@@ -150,6 +150,7 @@
         <item></item>
         <item>UK</item>
         <item>Netherlands</item>
+        <item>Belgium</item>
         <item>Spain</item>
     </string-array>
     <string-array name="doctype_array">

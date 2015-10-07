@@ -212,42 +212,49 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 		//int imageHeight = (Integer)properties.get(CaptureImage.);
 		Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - " + imageWidth + "x" + imageHeight);
 		// new size
-		int targetWidth = 1024;
-		int targetHeight = 768;
-		boolean isPortrait;
-		float format = (float)imageWidth/imageHeight;
-        float target_max_format = (float)targetWidth/targetHeight;
-        int imageWidthNew = targetWidth;
-        int imageHeightNew = targetHeight;
-        if (format > 1 ) {
-            isPortrait = false;
-            if (format > target_max_format) {
-                Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - landscape and large");
-                imageWidthNew = targetWidth;
-                imageHeightNew = imageHeight / imageWidth * targetHeight;
+        int targetWidth;
+        int targetHeight;
+        if (_myFlowType.equals("SPAIN_ID") || _myFlowType.equals("PROOF_ID") ) {
+            targetWidth = 1024;
+            targetHeight = 768;
+            boolean isPortrait;
+            float format = (float)imageWidth/imageHeight;
+            float target_max_format = (float)targetWidth/targetHeight;
+            int imageWidthNew = targetWidth;
+            int imageHeightNew = targetHeight;
+            if (format > 1 ) {
+                isPortrait = false;
+                if (format > target_max_format) {
+                    Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - landscape and large");
+                    imageWidthNew = targetWidth;
+                    imageHeightNew = imageHeight / imageWidth * targetHeight;
+                } else {
+                    Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - landscape and not large");
+                    imageHeightNew = targetHeight;
+                    imageWidthNew = imageWidth / imageHeight * targetWidth;
+                }
             } else {
-                Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - landscape and not large");
-                imageHeightNew = targetHeight;
-                imageWidthNew = imageWidth / imageHeight * targetWidth;
+                isPortrait = true;
+                if (format > target_max_format) {
+                    Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - portrait");
+                    imageWidthNew = targetHeight;
+                    imageHeightNew = imageHeight / imageWidth * targetWidth;
+                } else {
+                    Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - portrait");
+                    imageHeightNew = targetWidth;
+                    imageWidthNew = imageWidth / imageHeight * targetHeight;
+                }
             }
+            //HashMap<String, Object> parameters = new HashMap<String, Object>();
+            parameters.put(CaptureImage.FILTER_PARAM_RESIZE_WIDTH, (int)(imageWidthNew));
+            parameters.put(CaptureImage.FILTER_PARAM_RESIZE_HEIGHT, (int) (imageHeightNew));
+            Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - " + imageWidthNew + "x" + imageHeightNew);
+            // apply
+            CaptureImage.applyFilters(new String[]{CaptureImage.FILTER_RESIZE}, parameters);
         } else {
-            isPortrait = true;
-            if (format > target_max_format) {
-                Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - portrait");
-                imageWidthNew = targetHeight;
-                imageHeightNew = imageHeight / imageWidth * targetWidth;
-            } else {
-                Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - portrait");
-                imageHeightNew = targetWidth;
-                imageWidthNew = imageWidth / imageHeight * targetHeight;
-            }
+            targetWidth = 2400;
+            targetHeight = 3000;
         }
-        //HashMap<String, Object> parameters = new HashMap<String, Object>();
-        parameters.put(CaptureImage.FILTER_PARAM_RESIZE_WIDTH, (int)(imageWidthNew));
-        parameters.put(CaptureImage.FILTER_PARAM_RESIZE_HEIGHT, (int) (imageHeightNew));
-        Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - " + imageWidthNew + "x" + imageHeightNew);
-        // apply
-        CaptureImage.applyFilters(new String[]{CaptureImage.FILTER_RESIZE}, parameters);
         // deskew
         //applySlowFilter(CaptureImage.FILTER_PERSPECTIVE);
         // b&w

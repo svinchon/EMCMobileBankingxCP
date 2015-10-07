@@ -63,6 +63,6 @@
 	        android:id="@+id/ABInfo"
 	        android:orderInCategory="112"
 	        android:title="@string/Menu_GetInfo"
-            android:visible="false"/>
+            android:visible="true"/>
     </group>
 </menu>
