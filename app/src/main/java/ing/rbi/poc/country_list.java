@@ -15,7 +15,9 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -40,6 +42,7 @@ public class country_list extends Fragment {
     private Resources res;
     private String[] displayCountry;
     private String[] displayDocType;
+    private String[] displayDocTypeAdjusted;
     private String SelectedCountry;
     private String SelectedDocType;
 
@@ -121,7 +124,7 @@ public class country_list extends Fragment {
 
     public class SpinnerListener implements AdapterView.OnItemSelectedListener {
 
-        public SpinnerListener(){
+        public SpinnerListener() {
 
         }
 
@@ -129,21 +132,52 @@ public class country_list extends Fragment {
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             Spinner SpinView = (Spinner) parent;
             //Check to see if country has been selected
-            if (SpinView.getId() == R.id.country_spinner ) {
-                if(position > 0 ) {
-                    spDocType.setEnabled(true);
-                    SelectedCountry = displayCountry[position];
+            if (SpinView.getId() == R.id.country_spinner) if (position > 0) {
+                spDocType.setEnabled(true);
+                SelectedCountry = displayCountry[position];
+                // TODO SEB code to ajust doc list depending on country
+                List<String> list = new ArrayList<String>();
+                String strToKeep;
+                if (SelectedCountry.equals("UK")) {
+                    strToKeep = "Passport";
+                    for (int i = 0; i < displayDocType.length; i++) {
+                        if (strToKeep.indexOf(displayDocType[i]) >= 0) {
+                            list.add(displayDocType[i]);
+                        }
+                    }
+                }  else if (SelectedCountry.equals("Netherlands")) {
+                    strToKeep = "Passport;Driver License;National Identity Document";
+                    for (int i = 0; i < displayDocType.length; i++) {
+                        if (strToKeep.indexOf(displayDocType[i]) >= 0) {
+                            list.add(displayDocType[i]);
+                        }
+                    }
+                } else {
+                    for (int i = 0; i < displayDocType.length; i++) {
+                        list.add(displayDocType[i]);
+                    }
                 }
-                else {
-                    spDocType.setEnabled(false);
-                }
-
+                displayDocTypeAdjusted = new String[list.size()];
+                list.toArray(displayDocTypeAdjusted);
+                ArrayAdapter<String> doctypeSpinArrayAdapter;
+                doctypeSpinArrayAdapter = new ArrayAdapter<String>(
+                        parent.getContext(),
+                        android.R.layout.simple_spinner_item,
+                        displayDocTypeAdjusted
+                );
+                doctypeSpinArrayAdapter.setDropDownViewResource(
+                        android.R.layout.simple_dropdown_item_1line
+                );
+                spDocType.setAdapter(doctypeSpinArrayAdapter);
+                spDocType.setEnabled(true);
+            } else {
+                spDocType.setEnabled(false);
             }
             else {
-                if(position > 0) {
+                if (position > 0) {
                     SelectedDocType = displayDocType[position];
                     //Check to see if it's a passport
-                    if (SelectedDocType.equals("Passport")  || SelectedDocType.equals("Driver License")) {
+                    if (SelectedDocType.equals("Passport") || SelectedDocType.equals("Driver License")) {
                         handleProofID("Passport");
                     }
                     //Spanish ID
@@ -156,7 +190,9 @@ public class country_list extends Fragment {
                     }
                 }
             }
-        };
+        }
+
+        ;
 
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
@@ -203,6 +239,7 @@ public class country_list extends Fragment {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
+
     public void setMediaSelectHandler(MediaSelectedHandler mediaSelectHandler) {
         this.mediaSelectHandler = mediaSelectHandler;
     }
@@ -211,14 +248,15 @@ public class country_list extends Fragment {
         return mediaSelectHandler;
     }
 
-    public synchronized  void addToIntentData(String key, String value){
-        intentData.put(key,value);
+    public synchronized void addToIntentData(String key, String value) {
+        intentData.put(key, value);
     }
-    public String getFromIntentData(String key){
+
+    public String getFromIntentData(String key) {
         return intentData.get(key);
     }
 
-    public void cancelAllFlows(){
+    public void cancelAllFlows() {
         //RadioGroup rl = (RadioGroup) this.getActivity().findViewById(ing.rbi.poc.R.id.radioGroup);
         //rl.clearCheck();
 
@@ -252,27 +290,24 @@ public class country_list extends Fragment {
 
         // Handle results for activities launched by this activity.
         try {
-            if(requestCode == Constants.EVENT_CHOOSE_IMAGE && data != null && data.getData() != null) {
+            if (requestCode == Constants.EVENT_CHOOSE_IMAGE && data != null && data.getData() != null) {
                 // The user picked an image from the gallery.
                 // Send the new picture taken to the enhancement screen so that users can modify it if necessary.
                 Uri uri = data.getData();
                 getMediaSelectHandler().getMediaButtonClickHandler().gotoEnhanceImage(uri);
-            }
-            else if (requestCode == Constants.EVENT_ENH_OPER) {
-                if(resultCode != Activity.RESULT_CANCELED) {
+            } else if (requestCode == Constants.EVENT_ENH_OPER) {
+                if (resultCode != Activity.RESULT_CANCELED) {
                     intentData.put(Constants.FILE_NAME, data.getStringExtra("SavedFile"));
                     mediaSelectHandler.setupUIAfterEnhanceImage();
                 }
 
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             // Log a message and display the error to the user using our utility function.
             Log.e(TAG, e.getMessage(), e);
             CoreHelper.displayError(this.getActivity(), e);
         }
     }
-
 
 
 }
