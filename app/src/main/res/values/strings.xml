@@ -158,7 +158,7 @@
         <item>Driver License</item>
         <item>National Identity Document</item>
         <item>Passport</item>
-        <item>Invoice</item>
+        <item>Invoice/Statement</item>
         <item>Insurance Certificate</item>
         <item>Residence Card</item>
     </string-array>
