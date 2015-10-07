@@ -215,23 +215,15 @@ public class InvoiceHandler implements MediaSelectedHandler{
         final View invoice_details_view = layoutInflater.inflate(R.layout.details_invoice,null);
         LinearLayout layout_level_2 = (LinearLayout) createFragmentWeakReference.get().getActivity().findViewById(R.id.fragment_clist_dynamic_layout_level2);
         addImageThumbnail();
-
-
         String InvoiceNumber = InvoiceResults.InvoiceNumber;
         String InvoiceDate = InvoiceResults.InvoiceDate;
         String InvoiceAmount = InvoiceResults.InvoiceAmount ;
-
-
         EditText InvoiceNumberText = (EditText) invoice_details_view.findViewById(R.id.txt_Invoice_Number);
         InvoiceNumberText.setText(InvoiceNumber);
-
         EditText InvoiceDateText = (EditText) invoice_details_view.findViewById(R.id.txt_Invoice_Date);
         InvoiceDateText.setText(InvoiceDate);
-
         EditText InvoiceAmountText = (EditText) invoice_details_view.findViewById(R.id.txt_Invoice_Amount);
         InvoiceAmountText.setText(InvoiceAmount);
-
-
 
 //        Button acceptButton = (Button) invoice_details_view.findViewById(R.id.btn_proof_id_accept);
 //        acceptButton.setOnClickListener(new View.OnClickListener() {

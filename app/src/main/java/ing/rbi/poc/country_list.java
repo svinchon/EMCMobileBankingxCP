@@ -270,10 +270,12 @@ public class country_list extends Fragment {
         //RadioGroup rl = (RadioGroup) this.getActivity().findViewById(ing.rbi.poc.R.id.radioGroup);
         //rl.clearCheck();
 
-        LinearLayout layout_level1 = (LinearLayout) this.getActivity().findViewById(ing.rbi.poc.R.id.fragment_create_dynamic_layout_level1);
-        LinearLayout layout_level2 = (LinearLayout) this.getActivity().findViewById(ing.rbi.poc.R.id.fragment_create_dynamic_layout_level2);
-        //layout_level1.removeAllViews();
-        //layout_level2.removeAllViews();
+//        // TODO SEB changes to go back to country selection
+//        LinearLayout layout_level1 = (LinearLayout) this.getActivity().findViewById(ing.rbi.poc.R.id.fragment_create_dynamic_layout_level1);
+//        LinearLayout layout_level2 = (LinearLayout) this.getActivity().findViewById(ing.rbi.poc.R.id.fragment_create_dynamic_layout_level2);
+//        layout_level1.removeAllViews();
+//        layout_level2.removeAllViews();
+        startActivity(this.getActivity().getIntent());
     }
 
     private void handleProofID(String flowType) {
