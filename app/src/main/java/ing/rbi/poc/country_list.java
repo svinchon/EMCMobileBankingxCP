@@ -152,6 +152,13 @@ public class country_list extends Fragment {
                             list.add(displayDocType[i]);
                         }
                     }
+                } else if (SelectedCountry.equals("Turkey")) {
+                    strToKeep = "National Identity Document";
+                    for (int i = 0; i < displayDocType.length; i++) {
+                        if (strToKeep.indexOf(displayDocType[i]) >= 0) {
+                            list.add(displayDocType[i]);
+                        }
+                    }
                 } else {
                     for (int i = 0; i < displayDocType.length; i++) {
                         list.add(displayDocType[i]);

@@ -152,6 +152,7 @@
         <item>Netherlands</item>
         <item>Belgium</item>
         <item>Spain</item>
+        <item>Turkey</item>
     </string-array>
     <string-array name="doctype_array">
         <item></item>
@@ -163,6 +164,6 @@
         <item>Residence Card</item>
     </string-array>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>>
 </resources>
