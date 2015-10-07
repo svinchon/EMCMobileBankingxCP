@@ -177,15 +177,25 @@ public class country_list extends Fragment {
                 if (position > 0) {
                     SelectedDocType = displayDocType[position];
                     //Check to see if it's a passport
-                    if (SelectedDocType.equals("Passport") || SelectedDocType.equals("Driver License")) {
+                    if (
+                            SelectedDocType.equals("Passport") || SelectedDocType.equals("Driver License")
+                    ) {
                         handleProofID("Passport");
                     }
                     //Spanish ID
-                    if (SelectedDocType.equals("National Identity Document") && SelectedCountry.equals("Spain")) {
+                    if (
+                            SelectedDocType.equals("National Identity Document")
+                            &&
+                            SelectedCountry.equals("Spain")
+                    ) {
                         //This is the two page document
                         handleSpainID("Spain_ID");
                     }
-                    if (SelectedDocType.equals("Invoice")) {
+                    if (
+                            SelectedDocType.equals("Invoice")
+                            ||
+                            SelectedDocType.equals("Insurance Certificate")
+                    ) {
                         handleInvoice("Invoice");
                     }
                 }
@@ -262,8 +272,8 @@ public class country_list extends Fragment {
 
         LinearLayout layout_level1 = (LinearLayout) this.getActivity().findViewById(ing.rbi.poc.R.id.fragment_create_dynamic_layout_level1);
         LinearLayout layout_level2 = (LinearLayout) this.getActivity().findViewById(ing.rbi.poc.R.id.fragment_create_dynamic_layout_level2);
-        layout_level1.removeAllViews();
-        layout_level2.removeAllViews();
+        //layout_level1.removeAllViews();
+        //layout_level2.removeAllViews();
     }
 
     private void handleProofID(String flowType) {

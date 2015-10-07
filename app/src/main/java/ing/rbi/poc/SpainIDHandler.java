@@ -334,17 +334,15 @@ public class SpainIDHandler implements MediaSelectedHandler {
         EditText surnameText = (EditText) proof_details_view.findViewById(ing.rbi.poc.R.id.txt_Invoice_Number);
         surnameText.setText(surname);
 
-        Button acceptButton = (Button) proof_details_view.findViewById(ing.rbi.poc.R.id.btn_proof_id_accept);
-        acceptButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //createProofOfIDInServer(proof_details_view);
-                //Now go back to the main screen
-                AppConnectionUtility.loginToStartScreen(createFragmentWeakReference.get().getActivity(), null, null);
-            }
-        }
-
-        );
+//        Button acceptButton = (Button) proof_details_view.findViewById(ing.rbi.poc.R.id.btn_proof_id_accept);
+//        acceptButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                //createProofOfIDInServer(proof_details_view);
+//                //Now go back to the main screen
+//                AppConnectionUtility.loginToStartScreen(createFragmentWeakReference.get().getActivity(), null, null);
+//            }
+//        });
 
         Button cancelButton = (Button) proof_details_view.findViewById(ing.rbi.poc.R.id.btn_proof_id_cancel);
         cancelButton.setOnClickListener(new View.OnClickListener() {

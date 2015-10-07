@@ -7,6 +7,9 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 import com.google.gson.Gson;
@@ -17,6 +20,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 public class GetPIDResults extends AsyncTask{
 	private Context context;
@@ -70,6 +74,7 @@ public class GetPIDResults extends AsyncTask{
 	public GetPIDResults(Context context){
 		this.context  = context;
 	}
+
 	private void GetResults() {
 		String PrefURI;
 		//first get the URI from the preferences
@@ -84,29 +89,45 @@ public class GetPIDResults extends AsyncTask{
 		DefaultHttpClient client = new DefaultHttpClient();
 		HttpGet request = new HttpGet(PrefURI);
 		HttpResponse response;
+        String strResponse = "";
 		try {
 			response = client.execute(request);
-			String strResponse = EntityUtils.toString(response.getEntity(), "UTF8");
-			
-			//Desierialize the message back
+			strResponse = EntityUtils.toString(response.getEntity(), "UTF8");
+            Log.e("DEBUG", "Server says:" + strResponse);
+            Log.e("DEBUG", "isValidJSON says:" + isValidJSON(strResponse));
+    		//Desierialize the message back
 			Gson gsonResponse = new Gson();
 			PIDValuesResponse PIDResValues = gsonResponse.fromJson(strResponse, PIDValuesResponse.class);
 			Address = PIDResValues.PIDValuesResult.Address;
-			DOB = PIDResValues.PIDValuesResult.DOB; 
+			DOB = PIDResValues.PIDValuesResult.DOB;
 			DocumentNumber = PIDResValues.PIDValuesResult.DocumentNumber;
 			DocumentType = PIDResValues.PIDValuesResult.DocumentType;
 			ExpirationDate = PIDResValues.PIDValuesResult.ExpirationDate;
 			Forename = PIDResValues.PIDValuesResult.Forename;
 			Surname = PIDResValues.PIDValuesResult.Surname;
-		}
-		catch (ClientProtocolException e) {
+		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		Completed = true;
 	}
+
+    private boolean isValidJSON(String str) {
+        try {
+            new JSONObject(str);
+        } catch (JSONException ex) {
+            try {
+                new JSONArray(str);
+            } catch (JSONException ex1) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }

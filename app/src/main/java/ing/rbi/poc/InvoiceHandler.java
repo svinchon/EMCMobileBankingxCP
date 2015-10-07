@@ -233,13 +233,13 @@ public class InvoiceHandler implements MediaSelectedHandler{
 
 
 
-        Button acceptButton = (Button) invoice_details_view.findViewById(R.id.btn_proof_id_accept);
-        acceptButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                createProofOfIDInServer(invoice_details_view);
-            }
-        });
+//        Button acceptButton = (Button) invoice_details_view.findViewById(R.id.btn_proof_id_accept);
+//        acceptButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                createProofOfIDInServer(invoice_details_view);
+//            }
+//        });
 
         Button cancelButton = (Button) invoice_details_view.findViewById(R.id.btn_proof_id_cancel);
         cancelButton.setOnClickListener(new View.OnClickListener() {

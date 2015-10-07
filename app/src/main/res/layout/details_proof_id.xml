@@ -183,7 +183,7 @@
             android:orientation="horizontal"
             android:layout_marginTop="20dp"-->
 
-        <Button
+        <!--Button
             android:id="@+id/btn_proof_id_accept"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -192,9 +192,9 @@
             android:background="@color/ing_background"
             android:text="Accept"
             android:textColor="@color/white"
-            app:foundryTypeface="Quicksand-Regular" />
+            app:foundryTypeface="Quicksand-Regular" /-->
 
-        <Button
+        <!--Button
             android:id="@+id/btn_proof_id_cancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -204,10 +204,19 @@
             android:background="@color/ing_background"
             android:text="Cancel"
             android:textColor="@color/white"
-            app:foundryTypeface="Quicksand-Regular"
+            app:foundryTypeface="Quicksand-Regular" /-->
 
-            />
+        <Button
+            android:id="@+id/btn_proof_id_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:background="@color/ing_background"
+            android:text="Start Over"
+            android:textColor="@color/white"
+            app:foundryTypeface="Quicksand-Regular" />
+
     </LinearLayout>
-
 
 </RelativeLayout>
