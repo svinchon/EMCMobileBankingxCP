@@ -194,24 +194,30 @@ public class AddPID extends Activity implements PictureCallback {
                         e.printStackTrace();
                     }
                 }
-                //Get the Values back
-                String Address = PIDResults.Address;
-                String DOB = PIDResults.DOB;
-                String DocumentNumber = PIDResults.DocumentNumber;
-                String DocumentType = PIDResults.DocumentType;
-                String ExpirationDate = PIDResults.ExpirationDate;
-                String Forename = PIDResults.Forename;
-                String Surname = PIDResults.Surname;
-                Intent intent = new Intent(this, PIDResults.class);
-                intent.putExtra("BatchID", BatchID);
-                intent.putExtra("Address", Address);
-                intent.putExtra("DOB", DOB);
-                intent.putExtra("DocumentNumber", DocumentNumber);
-                intent.putExtra("DocumentType", DocumentType);
-                intent.putExtra("ExpirationDate", ExpirationDate);
-                intent.putExtra("Forename", Forename);
-                intent.putExtra("Surname", Surname);
-                startActivity(intent);
+                // TODO SEB
+                if ( PIDResults.isEmpty) {
+                    //Get the Values back
+                    String Address = PIDResults.Address;
+                    String DOB = PIDResults.DOB;
+                    String DocumentNumber = PIDResults.DocumentNumber;
+                    String DocumentType = PIDResults.DocumentType;
+                    String ExpirationDate = PIDResults.ExpirationDate;
+                    String Forename = PIDResults.Forename;
+                    String Surname = PIDResults.Surname;
+                    Intent intent = new Intent(this, PIDResults.class);
+                    intent.putExtra("BatchID", BatchID);
+                    intent.putExtra("Address", Address);
+                    intent.putExtra("DOB", DOB);
+                    intent.putExtra("DocumentNumber", DocumentNumber);
+                    intent.putExtra("DocumentType", DocumentType);
+                    intent.putExtra("ExpirationDate", ExpirationDate);
+                    intent.putExtra("Forename", Forename);
+                    intent.putExtra("Surname", Surname);
+                    startActivity(intent);
+                } else {
+                    ShowDLG("Bad picture quality", "no data found");
+                    Log.v("SEB", "No data read");
+                }
             } else {
                 ShowDLG("Batch Not Updated", "Unable to Add ID");
                 //Now go back to the select CF screen

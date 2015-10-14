@@ -202,17 +202,19 @@ public class country_list extends Fragment {
                     if (
                             SelectedDocType.equals("National Identity Document")
                             &&
-                            SelectedCountry.equals("Spain")
-                            ||
-                            SelectedCountry.equals("Netherlands")
-                            ||
-                            SelectedCountry.equals("Belgium")
+                            (
+                                    SelectedCountry.equals("Spain")
+                                    ||
+                                    SelectedCountry.equals("Netherlands")
+                                    ||
+                                    SelectedCountry.equals("Belgium")
+                            )
                     ) {
                         //This is the two page document
                         handleSpainID("Spain_ID");
                     }
                     if (
-                            SelectedDocType.equals("Invoice")
+                            SelectedDocType.equals("Invoice/Statement")
                             ||
                             SelectedDocType.equals("Insurance Certificate")
                     ) {

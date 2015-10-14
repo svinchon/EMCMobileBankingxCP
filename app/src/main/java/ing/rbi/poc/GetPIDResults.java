@@ -33,6 +33,8 @@ public class GetPIDResults extends AsyncTask{
 	public String ExpirationDate;
 	public String Forename;
 	public String Surname;
+	// TODO SEB to test if all fields are empty
+	public Boolean isEmpty = true;
 	//private ProgressDialog dialog;
 	
 	@Override
@@ -41,13 +43,12 @@ public class GetPIDResults extends AsyncTask{
 //	    dialog.setMessage("Please wait...");
 //	    dialog.show();
 //	    dialog.getCurrentFocus();
-	    
-	   
-	} 
+	}
 	
 	private class PIDValuesResponse{
 		public PIDValuesResultDetails PIDValuesResult;
 	}
+
 	private class PIDValuesResultDetails {
 		public String Address;
 		public String DOB;
@@ -57,12 +58,14 @@ public class GetPIDResults extends AsyncTask{
 		public String Forename;
 		public String Surname;
 	}
+
 	@Override
 	protected Object doInBackground(Object... params) {
 		// TODO Auto-generated method stub
 		GetResults();
 		return null;
 	}
+
 	@Override
 	protected void onPostExecute(Object result) {
 		// TODO Auto-generated method stub
@@ -71,6 +74,7 @@ public class GetPIDResults extends AsyncTask{
 //		}
 		super.onPostExecute(result);
 	}
+
 	public GetPIDResults(Context context){
 		this.context  = context;
 	}
@@ -105,6 +109,26 @@ public class GetPIDResults extends AsyncTask{
 			ExpirationDate = PIDResValues.PIDValuesResult.ExpirationDate;
 			Forename = PIDResValues.PIDValuesResult.Forename;
 			Surname = PIDResValues.PIDValuesResult.Surname;
+			// TODO SEB to test if all fields are empty
+			if (
+					!(
+							Address.equals("")
+							&&
+							DOB.equals("")
+							&&
+							DocumentNumber.equals("")
+							//&&
+							//DocumentType.equals("")
+							&&
+							ExpirationDate.equals("")
+							&&
+							Forename.equals("")
+							&&
+							Surname.equals("")
+					)
+			) {
+				isEmpty = false;
+			}
 		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

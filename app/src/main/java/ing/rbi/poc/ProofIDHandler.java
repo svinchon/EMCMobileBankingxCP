@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -132,6 +133,10 @@ public class ProofIDHandler implements MediaSelectedHandler{
             if (Batch.BatchUpdated = true) {
                 //Now wait for the results
                 GetPIDResults PIDResults = new GetPIDResults(activity);
+                // TODO SEB test result of OCR
+                if (PIDResults.isEmpty) {
+                    Log.v("TODO SEB", "Empty OCR Result");
+                }
                 PIDResults.BatchID = createFragmentWeakReference.get().getFromIntentData(Constants.BATCH_ID);;
                 PIDResults.execute();
                 while (!PIDResults.Completed == true){
