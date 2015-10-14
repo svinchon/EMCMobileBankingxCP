@@ -1,7 +1,9 @@
 package ing.rbi.poc;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -218,40 +220,41 @@ public class ProofIDHandler implements MediaSelectedHandler{
     }
 
     private void setupIDProofDetailsUI(GetPIDResults PIDResults){
-        LayoutInflater layoutInflater = createFragmentWeakReference.get().getActivity().getLayoutInflater();
-        final View proof_details_view = layoutInflater.inflate(ing.rbi.poc.R.layout.details_proof_id,null);
-        LinearLayout layout_level_2 = (LinearLayout) createFragmentWeakReference.get().getActivity().findViewById(ing.rbi.poc.R.id.fragment_clist_dynamic_layout_level2);
-        addImageThumbnail();
+        // TODO SEB adjust display depending on OCR Result
+        if (!PIDResults.isEmpty) {
+            LayoutInflater layoutInflater = createFragmentWeakReference.get().getActivity().getLayoutInflater();
+            final View proof_details_view = layoutInflater.inflate(ing.rbi.poc.R.layout.details_proof_id,null);
+            LinearLayout layout_level_2 = (LinearLayout) createFragmentWeakReference.get().getActivity().findViewById(ing.rbi.poc.R.id.fragment_clist_dynamic_layout_level2);
+            addImageThumbnail();
 
+            String address = PIDResults.Address;
+            String dOB = PIDResults.DOB;
+            String documentNumber = PIDResults.DocumentNumber ;
+            String documentType = PIDResults.DocumentType;
+            String expirationDate = PIDResults.ExpirationDate;
+            String forename = PIDResults.Forename;
+            String surname = PIDResults.Surname;
 
-        String address = PIDResults.Address;
-        String dOB = PIDResults.DOB;
-        String documentNumber = PIDResults.DocumentNumber ;
-        String documentType = PIDResults.DocumentType;
-        String expirationDate = PIDResults.ExpirationDate;
-        String forename = PIDResults.Forename;
-        String surname = PIDResults.Surname;
+            //EditText addressText = (EditText) proof_details_view.findViewById(ing.rbi.poc.R.id.txt_address);
+            //addressText.setText(address);
 
-        //EditText addressText = (EditText) proof_details_view.findViewById(ing.rbi.poc.R.id.txt_address);
-        //addressText.setText(address);
+            EditText dOBText = (EditText) proof_details_view.findViewById(ing.rbi.poc.R.id.txt_Invoice_Amount);
+            dOBText.setText(dOB);
 
-        EditText dOBText = (EditText) proof_details_view.findViewById(ing.rbi.poc.R.id.txt_Invoice_Amount);
-        dOBText.setText(dOB);
+            EditText documentNumberText = (EditText) proof_details_view.findViewById(ing.rbi.poc.R.id.txt_docnumber);
+            documentNumberText.setText(documentNumber);
 
-        EditText documentNumberText = (EditText) proof_details_view.findViewById(ing.rbi.poc.R.id.txt_docnumber);
-        documentNumberText.setText(documentNumber);
+            EditText documentTypeText = (EditText) proof_details_view.findViewById(ing.rbi.poc.R.id.txt_doctype);
+            documentTypeText.setText(documentType);
 
-        EditText documentTypeText = (EditText) proof_details_view.findViewById(ing.rbi.poc.R.id.txt_doctype);
-        documentTypeText.setText(documentType);
+            EditText expirationDateText = (EditText) proof_details_view.findViewById(ing.rbi.poc.R.id.txt_expdate);
+            expirationDateText.setText(expirationDate);
 
-        EditText expirationDateText = (EditText) proof_details_view.findViewById(ing.rbi.poc.R.id.txt_expdate);
-        expirationDateText.setText(expirationDate);
+            EditText forenameText = (EditText) proof_details_view.findViewById(ing.rbi.poc.R.id.txt_Invoice_Date);
+            forenameText.setText(forename);
 
-        EditText forenameText = (EditText) proof_details_view.findViewById(ing.rbi.poc.R.id.txt_Invoice_Date);
-        forenameText.setText(forename);
-
-        EditText surnameText = (EditText) proof_details_view.findViewById(ing.rbi.poc.R.id.txt_Invoice_Number);
-        surnameText.setText(surname);
+            EditText surnameText = (EditText) proof_details_view.findViewById(ing.rbi.poc.R.id.txt_Invoice_Number);
+            surnameText.setText(surname);
 
 //        Button acceptButton = (Button) proof_details_view.findViewById(ing.rbi.poc.R.id.btn_proof_id_accept);
 //        acceptButton.setOnClickListener(new View.OnClickListener() {
@@ -261,15 +264,29 @@ public class ProofIDHandler implements MediaSelectedHandler{
 //            }
 //        });
 
-        Button cancelButton = (Button) proof_details_view.findViewById(ing.rbi.poc.R.id.btn_proof_id_cancel);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cancelProofSubmission();
-            }
-        });
-        layout_level_2.addView(proof_details_view);
-
+            Button cancelButton = (Button) proof_details_view.findViewById(ing.rbi.poc.R.id.btn_proof_id_cancel);
+            cancelButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    cancelProofSubmission();
+                }
+            });
+            layout_level_2.addView(proof_details_view);
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(createFragmentWeakReference.get().getActivity());
+            builder
+                    .setTitle("Insufficient Image Quality")
+                    .setMessage("No data could be extracted from picture.  Please take a picture again.");
+            builder.setPositiveButton(
+                    ing.rbi.poc.R.string.OK,
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                        }
+                    }
+            );
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
     }
 
     private void addImageThumbnail() {
@@ -287,7 +304,6 @@ public class ProofIDHandler implements MediaSelectedHandler{
         preview_image_view.setImageBitmap(bitmap);
         preview_image_view.setLayoutParams(layoutParams);
         layout_level_1.addView(preview_image_view);
-
     }
 
     private void cancelProofSubmission() {
