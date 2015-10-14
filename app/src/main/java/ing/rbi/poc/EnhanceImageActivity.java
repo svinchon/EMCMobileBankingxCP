@@ -178,50 +178,43 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
         int imageHeight = (Integer)properties.get(CaptureImage.IMAGE_PROPERTY_HEIGHT);
 		// created empty parameters array
         HashMap<String, Object> parameters = new HashMap<String, Object>();
-		// crop depending of flow type
+		// *****************************************************************************************
+		// CROP DIFFERENTLY DEPENDING ON FLOW TYPE
+        // *****************************************************************************************
         int _boxWidthPercent = 95;
         int _boxWidth = imageWidth *_boxWidthPercent/100;
         float _boxWidthHeightRatio = 2;
 		if (_myFlowType.equals("SPAIN_ID") || _myFlowType.equals("PROOF_ID") ) {
-			if (_myFlowType.equals("SPAIN_ID")) {
-                // this should match the ratio used in SVPositioningView_ID.java
-				_boxWidthHeightRatio = 1.5f;
-			} else if (_myFlowType.equals("PROOF_ID")) {
-                // this should match the ratio used in PositioningView_PASSPORT.java
-                _boxWidthHeightRatio = 1.25f;
-			}
+			// this should match the ratio used in xxPositioningView_xx.java
+			if (_myFlowType.equals("SPAIN_ID")) { _boxWidthHeightRatio = 1.5f; 	}
+			else if (_myFlowType.equals("PROOF_ID")) { _boxWidthHeightRatio = 1.25f; }
 			int _boxHeight = (int)(_boxWidth / _boxWidthHeightRatio);
 			int _left = (int)((imageWidth-_boxWidth)/2);
 			int _top=(int)((imageHeight-_boxHeight)/2);
 			int _right=(int)((imageWidth-_boxWidth)/2+_boxWidth);
 			int _bottom=(int)((imageHeight-_boxHeight)/2+_boxHeight);
-			Rect rect = new Rect(
-					(int)(_left),
-					(int)(_top),
-					(int)(_right),
-					(int)(_bottom)
-			);
+			Rect rect = new Rect((int)(_left), (int)(_top), (int)(_right), (int)(_bottom));
+			// CROP!
 			parameters.put(CaptureImage.FILTER_PARAM_CROP_RECTANGLE, rect);
 			CaptureImage.applyFilters(new String[]{CaptureImage.FILTER_CROP}, parameters);
 		} else {
 			// auto crop (create issues in combination with above)
 			CaptureImage.applyFilters(new String[] { CaptureImage.FILTER_CROP }, getAutoCropPadding());
 		}
-		// resize
+        // *****************************************************************************************
+        // RESIZE IMAGE TO OPTIMISE TRANSFER AND PROCESSING
+        // *****************************************************************************************
 		// current size
 		//int imageHeight = (Integer)properties.get(CaptureImage.);
 		Log.v(TAG, "Enhance Image Operation - " + "enhanceForMe" + " - " + imageWidth + "x" + imageHeight);
 		// new size
-        int targetWidth;
-        int targetHeight;
+        int targetWidth, targetHeight;
         if (_myFlowType.equals("SPAIN_ID") || _myFlowType.equals("PROOF_ID") ) {
-            targetWidth = 1024;
-            targetHeight = 768;
+            targetWidth = 1024;  targetHeight = 768;
             boolean isPortrait;
             float format = (float)imageWidth/imageHeight;
             float target_max_format = (float)targetWidth/targetHeight;
-            int imageWidthNew = targetWidth;
-            int imageHeightNew = targetHeight;
+            int imageWidthNew = targetWidth;  int imageHeightNew = targetHeight;
             if (format > 1 ) {
                 isPortrait = false;
                 if (format > target_max_format) {
@@ -304,8 +297,7 @@ public class EnhanceImageActivity extends Activity implements QuadrilateralCropC
 
     private void processEnhanceAndBack() {
         // If the image has not been edited, then leave without saving.
-        if (!_imgEdited)
-        {
+        if (!_imgEdited) {
            completeAndReturn(Constants.EVENT_ENHANCE_OPERATION_ENHANCE_NO, _filename);
            return;
         }

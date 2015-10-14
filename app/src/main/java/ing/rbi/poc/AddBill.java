@@ -82,7 +82,7 @@ public class AddBill extends Activity implements PictureCallback {
                 ShowDLG("Invalid Reference", "Document Reference Required");
             } else {
                 // Launch the camera to take a picture.
-                // TODO SEB bill take picture
+                // TODO bill take picture
                 CaptureImage.takePicture(this, parameters);
             }
         } else {

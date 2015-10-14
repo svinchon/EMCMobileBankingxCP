@@ -64,7 +64,7 @@ public class AddPID extends Activity implements PictureCallback {
     public void onTakePicture(View view) {
         // Launch the camera to take a picture.
         HashMap<String, Object> parameters = CoreHelper.getTakePictureParametersFromPrefs(this);
-        // TODO SEB pid take picture
+        // TODO pid take picture
         CaptureImage.takePicture(this, parameters);
     }
 

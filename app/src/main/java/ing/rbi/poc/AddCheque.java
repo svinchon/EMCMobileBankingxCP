@@ -78,7 +78,7 @@ public class AddCheque extends Activity implements PictureCallback {
         if (!ChequeReference.isEmpty()) {
             HashMap<String, Object> parameters = CoreHelper.getTakePictureParametersFromPrefs(this);
             // Launch the camera to take a picture.
-            // TODO SEB cheque take picture
+            // TODO cheque take picture
             CaptureImage.takePicture(this, parameters);
             //Show the progress bar
             ProgressBar pBar = (ProgressBar) findViewById(ing.rbi.poc.R.id.cheque_progressBar);

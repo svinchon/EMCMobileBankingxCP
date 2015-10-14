@@ -136,12 +136,13 @@ public class SpainIDHandler implements MediaSelectedHandler {
         //Remove all UI elements from front cheque addition
         //media buttons might already be removed
         View mediaButtonView = layout_level_1.findViewById(R.id.add_back_of_cheque_media_buttons);
-        if(mediaButtonView != null) {
+        if (mediaButtonView != null) {
             ((ViewGroup) layout_level_1.findViewById(R.id.add_back_of_cheque_media_buttons).getParent()).removeView(layout_level_1.findViewById(ing.rbi.poc.R.id.add_back_of_cheque_media_buttons));
         }
-        ((ViewGroup) layout_level_1.findViewById(R.id.back_cheque_radio_group).getParent()).removeView(layout_level_1.findViewById(ing.rbi.poc.R.id.back_cheque_radio_group));
+        // TODO SEB commented to enforce second document
+//        ((ViewGroup) layout_level_1.findViewById(R.id.back_cheque_radio_group).getParent()).removeView(layout_level_1.findViewById(ing.rbi.poc.R.id.back_cheque_radio_group));
         ((ViewGroup) layout_level_1.findViewById(R.id.label_back_cheque).getParent()).removeView(layout_level_1.findViewById(ing.rbi.poc.R.id.label_back_cheque));
-        if(removeThumbnailView) {
+        if (removeThumbnailView) {
             ((ViewGroup) layout_level_1.findViewById(R.id.image_preview).getParent()).removeView(layout_level_1.findViewById(ing.rbi.poc.R.id.image_preview));
         }
     }
@@ -164,7 +165,7 @@ public class SpainIDHandler implements MediaSelectedHandler {
         LinearLayout layout_level2 = (LinearLayout) context.findViewById(ing.rbi.poc.R.id.fragment_clist_dynamic_layout_level2);
         View camera = view.findViewById(ing.rbi.poc.R.id.pid_camera_btn);
         View gallery = view.findViewById(ing.rbi.poc.R.id.pid_gallery_btn);
-        mediaButtonClickHandler =new MediaButtonClickHandler(context, this, fragment, Constants.FLOW_SPAIN_ID);
+        mediaButtonClickHandler = new MediaButtonClickHandler(context, this, fragment, Constants.FLOW_SPAIN_ID);
         camera.setOnClickListener(mediaButtonClickHandler);
         gallery.setOnClickListener(mediaButtonClickHandler);
 
@@ -207,41 +208,42 @@ public class SpainIDHandler implements MediaSelectedHandler {
         final View backChequeMediaView = layoutBackOfCheque.findViewById(R.id.add_back_of_cheque_media_buttons);
         final View proceedButton = layoutBackOfCheque.findViewById(R.id.add_back_of_cheque_proceed);
 
-        RadioButton yesButton = (RadioButton) layoutBackOfCheque.findViewById(R.id.back_cheque_radio_yes);
-        RadioButton noButton = (RadioButton) layoutBackOfCheque.findViewById(R.id.back_cheque_radio_no);
-
-        yesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ViewGroup mediaViewParent = (ViewGroup) backChequeMediaView.getParent();
-                if (mediaViewParent != null) {
-                    mediaViewParent.removeView(backChequeMediaView);
-                }
-
-                ViewGroup proceedButtonParent = (ViewGroup) proceedButton.getParent();
-                if (proceedButtonParent != null) {
-                    proceedButtonParent.removeView(proceedButton);
-                }
-                layoutBackOfCheque.addView(backChequeMediaView);
-            }
-        });
-        noButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ViewGroup mediaViewParent = (ViewGroup) backChequeMediaView.getParent();
-                if (mediaViewParent != null) {
-                    mediaViewParent.removeView(backChequeMediaView);
-                }
-
-                ViewGroup proceedButtonParent = (ViewGroup) proceedButton.getParent();
-                if (proceedButtonParent != null) {
-                    proceedButtonParent.removeView(proceedButton);
-                }
-
-                layoutBackOfCheque.addView(proceedButton);
-
-            }
-        });
+//          TODO SEB commented to enforce second document
+//        RadioButton yesButton = (RadioButton) layoutBackOfCheque.findViewById(R.id.back_cheque_radio_yes);
+//        RadioButton noButton = (RadioButton) layoutBackOfCheque.findViewById(R.id.back_cheque_radio_no);
+//
+//        yesButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ViewGroup mediaViewParent = (ViewGroup) backChequeMediaView.getParent();
+//                if (mediaViewParent != null) {
+//                    mediaViewParent.removeView(backChequeMediaView);
+//                }
+//
+//                ViewGroup proceedButtonParent = (ViewGroup) proceedButton.getParent();
+//                if (proceedButtonParent != null) {
+//                    proceedButtonParent.removeView(proceedButton);
+//                }
+//                layoutBackOfCheque.addView(backChequeMediaView);
+//            }
+//        });
+//        noButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ViewGroup mediaViewParent = (ViewGroup) backChequeMediaView.getParent();
+//                if (mediaViewParent != null) {
+//                    mediaViewParent.removeView(backChequeMediaView);
+//                }
+//
+//                ViewGroup proceedButtonParent = (ViewGroup) proceedButton.getParent();
+//                if (proceedButtonParent != null) {
+//                    proceedButtonParent.removeView(proceedButton);
+//                }
+//
+//                layoutBackOfCheque.addView(proceedButton);
+//
+//            }
+//        });
 
         proceedButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -255,12 +257,32 @@ public class SpainIDHandler implements MediaSelectedHandler {
         camera.setOnClickListener(mediaButtonClickHandler);
         gallery.setOnClickListener(mediaButtonClickHandler);
 
-        ViewGroup mediaViewParent = (ViewGroup) backChequeMediaView.getParent();
-        mediaViewParent.removeView(backChequeMediaView);
-        ViewGroup proceedButtonParent = (ViewGroup) proceedButton.getParent();
-        proceedButtonParent.removeView(proceedButton);
+        // TODO SEB renamed to avoid conflict
+        ViewGroup mediaViewParent2;
+        mediaViewParent2 = (ViewGroup) backChequeMediaView.getParent();
+        mediaViewParent2.removeView(backChequeMediaView);
+        // TODO SEB renamed to avoid conflict
+        ViewGroup proceedButtonParent2;
+        proceedButtonParent2 = (ViewGroup) proceedButton.getParent();
+        if (proceedButtonParent2 != null) {
+            proceedButtonParent2.removeView(proceedButton);
+        }
 
         layout_level_1.addView(layoutBackOfCheque);
+
+        // TODO SEB moved to enforce second document
+        ViewGroup mediaViewParent = (ViewGroup) backChequeMediaView.getParent();
+        if (mediaViewParent != null) {
+            mediaViewParent.removeView(backChequeMediaView);
+        }
+
+        ViewGroup proceedButtonParent = (ViewGroup) proceedButton.getParent();
+        if (proceedButtonParent != null) {
+            proceedButtonParent.removeView(proceedButton);
+        }
+        layoutBackOfCheque.addView(backChequeMediaView);
+        // end of move
+
     }
 
     private void proceedForBatchUpdate(final boolean backChequeAlsoProcessed) {
@@ -291,7 +313,7 @@ public class SpainIDHandler implements MediaSelectedHandler {
         t.start();
     }
 
-    private void setupIDProofDetailsUI(GetPIDResults PIDResults){
+    private void setupIDProofDetailsUI(GetPIDResults PIDResults) {
 
         LinearLayout layoutBackOfCheque = (LinearLayout) createFragmentWeakReference.get().getActivity().findViewById(R.id.layout_back_cheque);
         LinearLayout layoutparent = (LinearLayout) layoutBackOfCheque.getParent();
@@ -300,14 +322,14 @@ public class SpainIDHandler implements MediaSelectedHandler {
         proceedButtonParent.removeView(proceedButton);
 
         LayoutInflater layoutInflater = createFragmentWeakReference.get().getActivity().getLayoutInflater();
-        final View proof_details_view = layoutInflater.inflate(ing.rbi.poc.R.layout.details_proof_id,null);
+        final View proof_details_view = layoutInflater.inflate(ing.rbi.poc.R.layout.details_proof_id, null);
         LinearLayout layout_level_2 = (LinearLayout) createFragmentWeakReference.get().getActivity().findViewById(ing.rbi.poc.R.id.fragment_clist_dynamic_layout_level2);
         //addImageThumbnail();
 
 
         String address = PIDResults.Address;
         String dOB = PIDResults.DOB;
-        String documentNumber = PIDResults.DocumentNumber ;
+        String documentNumber = PIDResults.DocumentNumber;
         String documentType = PIDResults.DocumentType;
         String expirationDate = PIDResults.ExpirationDate;
         String forename = PIDResults.Forename;
@@ -356,6 +378,7 @@ public class SpainIDHandler implements MediaSelectedHandler {
         layout_level_2.addView(proof_details_view);
 
     }
+
     public void createProofOfIDInServer(View View) {
         View view = createFragmentWeakReference.get().getActivity().findViewById(ing.rbi.poc.R.id.fragment_clist_dynamic_layout_level2);
         SharedPreferences gprefs = PreferenceManager.getDefaultSharedPreferences(createFragmentWeakReference.get().getActivity());
@@ -401,8 +424,7 @@ public class SpainIDHandler implements MediaSelectedHandler {
         try {
             if (DLen == 6) {
                 tdate = new SimpleDateFormat("dd/MM/yy").parse(DB.getText().toString());
-            }
-            else if (DLen == 8) {
+            } else if (DLen == 8) {
                 tdate = new SimpleDateFormat("dd/MM/yyyy").parse(DB.getText().toString());
             }
 
@@ -427,10 +449,9 @@ public class SpainIDHandler implements MediaSelectedHandler {
         tdate = null;
         DLen = tdString.length();
         try {
-            if (DLen == 6){
+            if (DLen == 6) {
                 tdate = new SimpleDateFormat("dd/MM/yy").parse(ED.getText().toString());
-            }
-            else if (DLen == 8) {
+            } else if (DLen == 8) {
                 tdate = new SimpleDateFormat("dd/MM/yyyy").parse(ED.getText().toString());
             }
 
@@ -447,9 +468,9 @@ public class SpainIDHandler implements MediaSelectedHandler {
 
         String DocType = "&document_type=" + DT.getText().toString().replace(" ", "%20");
         DocType = DocType.replace("?", "");
-        String DocNumber = "&document_number=" + DN.getText().toString().replace(" ","&20");
+        String DocNumber = "&document_number=" + DN.getText().toString().replace(" ", "&20");
         DocNumber = DocNumber.replace("?", "");
-        String Address = "&address=" + AD.getText().toString().replace(" ","%20");
+        String Address = "&address=" + AD.getText().toString().replace(" ", "%20");
         Address = Address.replace("?", "");
         Address = Address.replaceAll("[\n\r]", "%20");
         //This resets all of the batch options and goes back to the upload batch create screen
@@ -458,14 +479,18 @@ public class SpainIDHandler implements MediaSelectedHandler {
         UpdatexCP update = new UpdatexCP(createFragmentWeakReference.get().getActivity());
         update.UpdateURI = xCPURI;
         update.execute();
-        while (!update.Completed == true){
-            try{Thread.sleep(100);}
-            catch (InterruptedException e) { e.printStackTrace(); }
+        while (!update.Completed == true) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
         //Now go back to the main screen
         AppConnectionUtility.loginToStartScreen(createFragmentWeakReference.get().getActivity(), null, null);
     }
+
     private void cancelProofSubmission() {
         createFragmentWeakReference.get().cancelAllFlows();
     }
@@ -482,12 +507,11 @@ public class SpainIDHandler implements MediaSelectedHandler {
         String SortCode = myChequeResults.SortCode;
         String batchID = createFragmentWeakReference.get().getFromIntentData(Constants.BATCH_ID);
 
-        if(backChequeAlsoProcessed){
+        if (backChequeAlsoProcessed) {
             Button proceedButton = (Button) layout_level_1.findViewById(R.id.add_cheque_proceed);
             ViewGroup parent = (ViewGroup) proceedButton.getParent();
             parent.removeView(proceedButton);
-        }
-        else {
+        } else {
             removeAllUIElementsAddedBeforeBackChequeProcess(false);
             Button proceedButton = (Button) layout_level_1.findViewById(R.id.add_back_of_cheque_proceed);
             ViewGroup parent = (ViewGroup) proceedButton.getParent();
@@ -501,7 +525,7 @@ public class SpainIDHandler implements MediaSelectedHandler {
         acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               handleChequeUpload();
+                handleChequeUpload();
             }
         });
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -592,11 +616,15 @@ public class SpainIDHandler implements MediaSelectedHandler {
             if (Batch.BatchUpdated = true) {
                 //Now wait for the results
                 GetPIDResults PIDResults = new GetPIDResults(activity);
-                PIDResults.BatchID = createFragmentWeakReference.get().getFromIntentData(Constants.BATCH_ID);;
+                PIDResults.BatchID = createFragmentWeakReference.get().getFromIntentData(Constants.BATCH_ID);
+                ;
                 PIDResults.execute();
-                while (!PIDResults.Completed == true){
-                    try{Thread.sleep(100);}
-                    catch (InterruptedException e) { e.printStackTrace(); }
+                while (!PIDResults.Completed == true) {
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 //Get the Values back
                 myPidResults = PIDResults;
@@ -612,6 +640,7 @@ public class SpainIDHandler implements MediaSelectedHandler {
             }
         }
     }
+
     private void createChequeInServer() {
         Activity activity = createFragmentWeakReference.get().getActivity();
         SharedPreferences gprefs = PreferenceManager.getDefaultSharedPreferences(activity);
@@ -646,13 +675,13 @@ public class SpainIDHandler implements MediaSelectedHandler {
 
         String cheque_amount = "";
         cheque_amount = "&cheque_amount=" + CA.getText().toString();
-        cheque_amount = cheque_amount.replace(" ","%20");
-        cheque_amount = cheque_amount.replace("?","%20");
+        cheque_amount = cheque_amount.replace(" ", "%20");
+        cheque_amount = cheque_amount.replace("?", "%20");
 
         String cheque_number = "";
         cheque_number = "&cheque_number=" + CN.getText().toString();
-        cheque_number = cheque_number.replace(" ","%20");
-        cheque_number = cheque_number.replace("?","%20");
+        cheque_number = cheque_number.replace(" ", "%20");
+        cheque_number = cheque_number.replace("?", "%20");
 
         String cheque_reference = "";
         cheque_reference = "&cheque_reference=null";
@@ -670,8 +699,7 @@ public class SpainIDHandler implements MediaSelectedHandler {
         }
         if (tdate == null) {
 
-        }
-        else {
+        } else {
             cheque_date = "&cheque_date=" + df.format(tdate);
         }
 
@@ -681,9 +709,12 @@ public class SpainIDHandler implements MediaSelectedHandler {
         UpdatexCP update = new UpdatexCP(activity);
         update.UpdateURI = xCPURI;
         update.execute();
-        while (!update.Completed == true){
-            try{Thread.sleep(100);}
-            catch (InterruptedException e) { e.printStackTrace(); }
+        while (!update.Completed == true) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
         creatingChequeInServer = false;
@@ -695,7 +726,6 @@ public class SpainIDHandler implements MediaSelectedHandler {
     }
 
 
-
     private void showProgressDialog() {
         progressDialog = new ProgressDialog(createFragmentWeakReference.get().getActivity());
         progressDialog.setIndeterminate(true);
@@ -704,8 +734,9 @@ public class SpainIDHandler implements MediaSelectedHandler {
         progressDialog.show();
         progressDialog.getCurrentFocus();
     }
+
     private void removeProgressDialog() {
-        if(progressDialog.isShowing()){
+        if (progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
     }

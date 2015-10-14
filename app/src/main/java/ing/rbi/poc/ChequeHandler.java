@@ -134,7 +134,7 @@ public class ChequeHandler implements MediaSelectedHandler {
         if(mediaButtonView != null) {
             ((ViewGroup) layout_level_1.findViewById(ing.rbi.poc.R.id.add_back_of_cheque_media_buttons).getParent()).removeView(layout_level_1.findViewById(ing.rbi.poc.R.id.add_back_of_cheque_media_buttons));
         }
-        ((ViewGroup) layout_level_1.findViewById(ing.rbi.poc.R.id.back_cheque_radio_group).getParent()).removeView(layout_level_1.findViewById(ing.rbi.poc.R.id.back_cheque_radio_group));
+//        ((ViewGroup) layout_level_1.findViewById(ing.rbi.poc.R.id.back_cheque_radio_group).getParent()).removeView(layout_level_1.findViewById(ing.rbi.poc.R.id.back_cheque_radio_group));
         ((ViewGroup) layout_level_1.findViewById(ing.rbi.poc.R.id.label_back_cheque).getParent()).removeView(layout_level_1.findViewById(ing.rbi.poc.R.id.label_back_cheque));
         if(removeThumbnailView) {
             ((ViewGroup) layout_level_1.findViewById(ing.rbi.poc.R.id.image_preview).getParent()).removeView(layout_level_1.findViewById(ing.rbi.poc.R.id.image_preview));
@@ -204,12 +204,12 @@ public class ChequeHandler implements MediaSelectedHandler {
         final View backChequeMediaView = layoutBackOfCheque.findViewById(ing.rbi.poc.R.id.add_back_of_cheque_media_buttons);
         final View proceedButton = layoutBackOfCheque.findViewById(ing.rbi.poc.R.id.add_back_of_cheque_proceed);
 
-        RadioButton yesButton = (RadioButton) layoutBackOfCheque.findViewById(ing.rbi.poc.R.id.back_cheque_radio_yes);
-        RadioButton noButton = (RadioButton) layoutBackOfCheque.findViewById(ing.rbi.poc.R.id.back_cheque_radio_no);
+//        RadioButton yesButton = (RadioButton) layoutBackOfCheque.findViewById(ing.rbi.poc.R.id.back_cheque_radio_yes);
+//        RadioButton noButton = (RadioButton) layoutBackOfCheque.findViewById(ing.rbi.poc.R.id.back_cheque_radio_no);
 
-        yesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+//        yesButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
                 ViewGroup mediaViewParent = (ViewGroup) backChequeMediaView.getParent();
                 if (mediaViewParent != null) {
                     mediaViewParent.removeView(backChequeMediaView);
@@ -220,25 +220,25 @@ public class ChequeHandler implements MediaSelectedHandler {
                     proceedButtonParent.removeView(proceedButton);
                 }
                 layoutBackOfCheque.addView(backChequeMediaView);
-            }
-        });
-        noButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ViewGroup mediaViewParent = (ViewGroup) backChequeMediaView.getParent();
-                if (mediaViewParent != null) {
-                    mediaViewParent.removeView(backChequeMediaView);
-                }
-
-                ViewGroup proceedButtonParent = (ViewGroup) proceedButton.getParent();
-                if (proceedButtonParent != null) {
-                    proceedButtonParent.removeView(proceedButton);
-                }
-
-                layoutBackOfCheque.addView(proceedButton);
-
-            }
-        });
+//            }
+//        });
+//        noButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ViewGroup mediaViewParent = (ViewGroup) backChequeMediaView.getParent();
+//                if (mediaViewParent != null) {
+//                    mediaViewParent.removeView(backChequeMediaView);
+//                }
+//
+//                ViewGroup proceedButtonParent = (ViewGroup) proceedButton.getParent();
+//                if (proceedButtonParent != null) {
+//                    proceedButtonParent.removeView(proceedButton);
+//                }
+//
+//                layoutBackOfCheque.addView(proceedButton);
+//
+//            }
+//        });
 
         proceedButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -252,9 +252,11 @@ public class ChequeHandler implements MediaSelectedHandler {
         camera.setOnClickListener(mediaButtonClickHandler);
         gallery.setOnClickListener(mediaButtonClickHandler);
 
-        ViewGroup mediaViewParent = (ViewGroup) backChequeMediaView.getParent();
+//        ViewGroup mediaViewParent;
+        mediaViewParent = (ViewGroup) backChequeMediaView.getParent();
         mediaViewParent.removeView(backChequeMediaView);
-        ViewGroup proceedButtonParent = (ViewGroup) proceedButton.getParent();
+//        ViewGroup proceedButtonParent;
+        proceedButtonParent = (ViewGroup) proceedButton.getParent();
         proceedButtonParent.removeView(proceedButton);
 
         layout_level_1.addView(layoutBackOfCheque);

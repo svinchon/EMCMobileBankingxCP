@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout_back_cheque"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/label_back_cheque"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:paddingTop="10dp"
         android:text="Attach another image"
         android:textColor="@color/ing_background"
         android:textSize="20sp"
-        android:paddingTop="10dp"
-        app:foundryTypeface="Quicksand-Regular"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        />
+        app:foundryTypeface="Quicksand-Regular" />
 
-    <RadioGroup
+    <!--RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/back_cheque_radio_group"
@@ -42,22 +42,23 @@
             app:foundryTypeface="Cantarell-Regular"
             android:textSize="20sp"
             />
-        </RadioGroup>
+        </RadioGroup-->
 
-    <include layout="@layout/add_proof_id"
+    <include
+        android:id="@+id/add_back_of_cheque_media_buttons"
+        layout="@layout/add_proof_id"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="10dp"
         android:layout_gravity="center"
-        android:id="@+id/add_back_of_cheque_media_buttons"/>
+        android:layout_marginTop="10dp" />
 
-
-    <include layout="@layout/cheque_proceed"
+    <include
+        android:id="@+id/add_back_of_cheque_proceed"
+        layout="@layout/cheque_proceed"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginTop="10dp"
+        android:layout_height="81dp"
+        android:layout_gravity="center"
         android:layout_marginBottom="20dp"
-        android:layout_gravity="center"
-        android:id="@+id/add_back_of_cheque_proceed"/>
+        android:layout_marginTop="10dp" />
 
 </LinearLayout>

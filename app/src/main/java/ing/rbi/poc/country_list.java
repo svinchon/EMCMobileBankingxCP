@@ -139,7 +139,7 @@ public class country_list extends Fragment {
                 List<String> list = new ArrayList<String>();
                 String strToKeep;
                 if (SelectedCountry.equals("UK")) {
-                    strToKeep = "Passport";
+                    strToKeep = "Driver License;Passport";
                     for (int i = 0; i < displayDocType.length; i++) {
                         if (strToKeep.indexOf(displayDocType[i]) >= 0) {
                             list.add(displayDocType[i]);
@@ -153,7 +153,14 @@ public class country_list extends Fragment {
                         }
                     }
                 } else if (SelectedCountry.equals("Turkey")) {
-                    strToKeep = "National Identity Document";
+                    strToKeep = "Passport;Driver License";
+                    for (int i = 0; i < displayDocType.length; i++) {
+                        if (strToKeep.indexOf(displayDocType[i]) >= 0) {
+                            list.add(displayDocType[i]);
+                        }
+                    }
+                } else if (SelectedCountry.equals("Belgium")) {
+                    strToKeep = "Passport;National Identity Document;Invoice/Statement;Insurance Certificate";
                     for (int i = 0; i < displayDocType.length; i++) {
                         if (strToKeep.indexOf(displayDocType[i]) >= 0) {
                             list.add(displayDocType[i]);
@@ -182,10 +189,12 @@ public class country_list extends Fragment {
             }
             else {
                 if (position > 0) {
-                    SelectedDocType = displayDocType[position];
+                    SelectedDocType = displayDocTypeAdjusted[position];
                     //Check to see if it's a passport
                     if (
-                            SelectedDocType.equals("Passport") || SelectedDocType.equals("Driver License")
+                            SelectedDocType.equals("Passport")
+                            ||
+                            SelectedDocType.equals("Driver License")
                     ) {
                         handleProofID("Passport");
                     }
@@ -194,6 +203,10 @@ public class country_list extends Fragment {
                             SelectedDocType.equals("National Identity Document")
                             &&
                             SelectedCountry.equals("Spain")
+                            ||
+                            SelectedCountry.equals("Netherlands")
+                            ||
+                            SelectedCountry.equals("Belgium")
                     ) {
                         //This is the two page document
                         handleSpainID("Spain_ID");
@@ -277,7 +290,7 @@ public class country_list extends Fragment {
         //RadioGroup rl = (RadioGroup) this.getActivity().findViewById(ing.rbi.poc.R.id.radioGroup);
         //rl.clearCheck();
 
-//        // TODO SEB changes to go back to country selection
+//        TODO SEB changes to go back to country selection
 //        LinearLayout layout_level1 = (LinearLayout) this.getActivity().findViewById(ing.rbi.poc.R.id.fragment_create_dynamic_layout_level1);
 //        LinearLayout layout_level2 = (LinearLayout) this.getActivity().findViewById(ing.rbi.poc.R.id.fragment_create_dynamic_layout_level2);
 //        layout_level1.removeAllViews();

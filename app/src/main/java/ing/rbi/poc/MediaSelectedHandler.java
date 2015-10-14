@@ -4,9 +4,6 @@ import android.app.Activity;
 
 import java.io.Serializable;
 
-/**
- * Created by tejas on 26/04/15.
- */
 public interface MediaSelectedHandler extends Serializable{
 public boolean isNewLoadForImage();
 public void setNewLoadForImage(boolean shouldLoadNew);

@@ -46,7 +46,7 @@ public class MediaButtonClickHandler implements View.OnClickListener, PictureCal
     public void onClick(View view) {
         Button clickedButton = (Button) view;
         if(clickedButton.getText().equals("Camera")){
-            // TODO SEB
+            // TODO SEB added parameter to handle camera to pass view
             // handleCamera();
             handleCamera(view);
         }
